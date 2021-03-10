@@ -1,0 +1,10 @@
+Clumsy;Clumsy.png;Unplayable. Ethereal.;
+Decay;Decay.png;Unplayable. At the end of your turn, take 2 damage.;
+Doubt;Doubt.png;Unplayable. At the end of your turn, gain 1  Weak.;
+Injury;Injury.png;Unplayable.;
+Normality;Normality.png;Unplayable. You cannot play more than 3 cards this turn.;
+Pain;Pain.png;Unplayable. While in hand, lose 1 HP when other cards are played.;
+Parasite;Parasite.png;Unplayable. If transformed or removed from your deck, lose 3 Max HP.;
+Regret;Regret.png;Unplayable. At the end of your turn, lose HP equal to the number of cards in your hand.;
+Shame;Shame.png;Unplayable. At the end of your turn, gain 1  Frail.;
+Writhe;Writhe.png;Unplayable. Innate.;

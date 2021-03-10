@@ -1,0 +1,128 @@
+
+
+Cultist 25%
+Jaw Worm 25%
+2 Louses : Each Louse has 50% chance of being either red or green. 25%
+Small Slimes : Acid Slime (M) or Spike Slime (M) + Acid Slime (S) or Spike Slime (S) 25%
+Gremlin Gang : 4 randomly chosen from 2 Mad, 2 Sneaky, 2 Fat, 1 Wizard and 1 Shield Gremlin. 6.25%
+Large Slime : Acid Slime (L) or Spike Slime (L). 12.5%
+Lots of Slimes : 3 Spike Slime (S) + 2 Acid Slime (S). 6.25%
+Blue Slaver : 12.5%
+Red Slaver : 6.25%
+3 Louses : Each Louse has 50% chance of being either red or green. 12.5%
+2 Fungi Beasts : 12.5%
+Exordium Thugs : Any Louse or Acid/Spike Slime (M) + Looter or Cultist or Any Slaver. 9.375%
+Exordium Wildlife : Fungi Beast or Jaw Worm + Any Louses or Acid/Spike Slime (M). 9.375%
+Looter : 12.5% 
+
+********************************
+
+------ Cultist ------
+The Cultist always starts with Incantation, then uses Dark Strike every turn after.
+	Incantation: Gains Ritual 3.
+	Dark Strike: Deal 6 damage.
+
+------ Jaw Worm ------
+Always starts with Chomp.
+Afterwards, has a 45% chance of using Bellow, 30% chance of using Thrash, and 25% chance of using Chomp.
+Cannot use Bellow twice in a row, cannot use Thrash 3 times in a row, and cannot use Chomp twice in a row.
+	Chomp: Deal 11 damage.
+	Thrash: Deal 7 damage, gain 5  Block.
+	Bellow: Gain 3  Strength and 6  Block.
+
+------ Louses ------
+Red Louse
+Has a 25% chance of using Grow and a 75% chance of using Bite. Cannot use the same move three times in a row.
+	Bite: Deals D* damage.
+	Grow: Gains 3  Strength.
+Green Louse
+Has a 25% chance of using Spit Web and a 75% chance of using Bite. Cannot use the same move three times in a row.
+	Bite: Deals D* damage.
+	Spit Web: Applies 2  Weak.
+
+------ Acid Slime ------
+Acid Slime (L)
+Has a 30% chance of using Corrosive Spit, 40% chance of using Tackle and 30% chance of using Lick in every turn.
+Cannot use Tackle twice in a row and cannot use Lick or Corrosive Spit three times in a row.
+It also cannot use Lick twice in a row and cannot use Corrosive Spit or Tackle three times in a row.
+Below half HP, Acid Slime (L) will split into two Acid Slime (M)s, each with the Acid Slime (L)'s current HP.
+	Corrosive Spit: Deals 11 damage, shuffles 2 Slimed into the discard pile.
+	Lick: Inflicts 2  Weak.
+	Tackle: Deals 16 damage.
+	Split: Dies and spawns 2 Acid Slimes (M)  with current HP.
+
+Acid Slime (M)
+(Same AI as Acid Slime (L) with the exception of not splitting)
+Has a 30% chance of using Corrosive Spit, 40% chance of using Tackle and 30% chance of using Lick in every turn.
+Cannot use Tackle twice in a row and cannot use Lick or Corrosive Spit three times in a row.
+It also cannot use Lick twice in a row and cannot use Corrosive Spit or Tackle three times in a row. 
+	Corrosive Spit: Deal 7 damage, shuffles 1 Slimed into the discard pile.
+	Lick: Inflicts 1  Weak.
+	Tackle: Deal 10 damage.
+
+Acid Slime (S) 
+First turn, 50% chance of using Lick, 50% chance of using Tackle. And then, alternates between the moves.
+	Lick: Inflict 1  Weak.
+	Tackle: Deals 3 damage.
+
+------ Gremlins ------
+4 randomly chosen from 2 Mad, 2 Sneaky, 2 Fat, 1 Wizard and 1 Shield Gremlin. 
+Fat Gremlin
+	Smash: Deal 4 damage, apply 1  Weak.
+Mad Gremlin - power : Increases Strength by X when taking attack damage.
+	Scratch: Deal 4 damage.
+Shield Gremlin - If there are other enemies, always uses Protect. If there are no other enemies, will always use Shield Bash.
+	Protect: One other enemy gains 7  Block.
+	Shield Bash: Deals 6 damage.
+Sneaky Gremlin
+	Puncture: Deals 9 damage.
+Gremlin Wizard - Spends 2 turns charging, then uses Ultimate Blast on the 3rd. From there onward, will charge for 3 turns and then use Ultimate Blast.
+	Charging: -
+	Ultimate Blast: Deal 25 damage.
+
+------ Spike Slime------
+Spike Slime (L)
+Has 30% chance of using Flame Tackle and 70% chance of using Lick. Cannot use the same move three times in a row.
+After splitting, the Medium Spike slimes will not have Split.  
+	Flame Tackle: Deals 16 damage, shuffles 2 Slimed into the discard pile.
+	Lick: Inflicts 2  Frail.
+	Split: Dies and spawns 2 Spike Slimes (M) with current HP.
+
+Spike Slime (M)
+	Flame Tackle: Deals 8 damage, shuffles Slimed into the discard pile.
+	Lick: Inflicts 1  Frail.
+
+Spike Slime (S)
+	Tackle: Deal 5 damage.
+
+------ Slavers ------
+Blue Slaver
+Every turn, has 40% chance to use Rake and 60% chance to use Stab. Cannot use the same move 3 times in a row.	
+	Stab: Deals 12 damage.
+	Rake: Deals 7 damage and applies 1  Weak.
+
+Red Slaver
+Always starts with Stab.After the first Stab, has 25% chance of using Entangled every turn. Will continuously follow the Scrape, Scrape, Stab pattern until Entangle is finally used.After Entangle is used, has 55% chance of using Scrape and 45% of using Stab every turn.Cannot use Stab 3 times in a row or Scrape 3 times in a row.	
+	Stab: Deals 13 damage
+	Scrape: Deals 8 damage and applies 1  Vulnerable.
+	Entangle: Applies 1 Entangled (You may not play any Attacks for 1 turn).
+
+------ Fungi Beasts ------
+Has a 60% chance of using Bite and a 40% chance of using Grow. Cannot use Bite three times in a row and cannot use Grow twice in a row.
+	Bite: Deal 6 damage.
+	Grow: Gain 3  Strength.
+
+------ Thieves ------
+Looter
+Uses Mug the first two turns.On the third turn, has a 50% chance to use Lunge and a 50% chance to use Smoke Bomb.If used Lunge turn 3, uses Smoke Bomb afterwards.Uses Escape after Smoke Bomb.	
+	Mug: Deal 10 damage.
+	Lunge: Deal 12 damage.
+	Smoke Bomb: Gain 6  Block.
+	Escape: Escape from combat, taking all stolen gold.
+
+Mugger
+Identical to Looter's pattern.
+	Mug: Deal 10 damage.
+	Lunge: Deal 16 damage.
+	Smoke Bomb: Gain 11  Block.
+	Escape: Escape from combat, taking all stolen Gold.

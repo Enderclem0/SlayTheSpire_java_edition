@@ -1,0 +1,16 @@
+-------------TRUC A FAIRE-------------------
+Affichage
+Interface
+Combat
+Deck
+Debug
+
+CLASSES:
+
+PLAYER
+DECK
+FIGHT
+(MONSTER)
+DISPLAY
+RUN
+MONSTER

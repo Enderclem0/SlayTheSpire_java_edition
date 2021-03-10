@@ -1,0 +1,28 @@
+Attack Potion;Common;Add 1 of 3 random Attack cards to your hand, it costs 0 this turn.
+Blessing of the Forge;Common;Upgrade all cards in your hand for the rest of combat.
+Block Potion;Common;Gain 12 Block.
+Colorless Potion;Common;Choose 1 of 3 random Colorless cards to add to your hand, it costs 0 this turn.
+Dexterity Potion;Common;Gain 2 Dexterity.
+Energy Potion;Common;Gain 2 Energy.
+Explosive Potion;Common;Deal 10 Damage to all enemies.
+Fear Potion;Common;Apply 3 Vulnerable.png Vulnerable.
+Fire Potion;Common;Deal 20 Damage to target enemy.
+Power Potion;Common;Add 1 of 3 random Power cards to your hand, it costs 0 this turn.
+Skill Potion;Common;Add 1 of 3 random Skill cards to your hand, it costs 0 this turn.
+Speed Potion;Common;Gain 5 Dexterity. At the end of your turn, lose 5 Dexterity.
+Flex Potion;Common;Gain 5 Strength. At the end of your turn, lose 5 Strength.
+Strength Potion;Common;Gain 2 Strength.
+Swift Potion;Common;Draw 3 cards.
+Weak Potion;Common;Apply 3 Weak.
+Blood Potion;Common (Ironclad only);Heal for 20% of your Max HP.
+Poison Potion;Common (Silent only);Apply 6 Poison to target enemy.
+Ancient Potion;Uncommon;Gain 1 Artifact.
+Distilled Chaos;Uncommon;Play the top 3 cards of your draw pile.
+Duplication Potion;Uncommon;This turn, your next card is played twice.
+Essence of Steel;Uncommon;Gain 4 Plated Armor.
+Gambler's Brew;Uncommon;Discard any number of cards, then draw that many.
+Liquid Bronze;Uncommon;Gain 3 Thorns.
+Liquid Memories;Uncommon;Choose a card in your discard pile and return it to your hand. It costs 0 this turn.
+Regen Potion;Uncommon;Gain 5 Regeneration.
+Elixir;Uncommon (Ironclad only);Exhaust any number of cards in your hand.
+Cunning Potion;Uncommon (Silent only);Add 3 Upgraded Shivs to your hand.
