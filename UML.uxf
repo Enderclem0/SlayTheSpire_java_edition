@@ -45,7 +45,7 @@
     </coordinates>
     <panel_attributes>FightRoom
 -
-+useCard(Card) : void
++useCard(main.Card.Card) : void
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -83,7 +83,7 @@
       <w>171</w>
       <h>108</h>
     </coordinates>
-    <panel_attributes>Card
+    <panel_attributes>main.Card.Card
 -
 -energyCost : int
 -rarity : String
