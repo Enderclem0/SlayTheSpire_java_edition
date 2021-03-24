@@ -10,6 +10,9 @@ public abstract class CardBuilder {
     private static HashSet<ProtoCard> Rare;
     private static HashSet<ProtoCard> Special;
     private int unlockNumber;
+    private static enum Color{
+        COLORLESS,CURSE,IRONCLAD
+    }
     private CardBuilder(){}
     public CardBuilder getCardBuilder(){
         if (instance==null){

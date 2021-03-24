@@ -1,4 +1,6 @@
 package main.Card;
 
-public class ProtoCard {
+public interface ProtoCard {
+
+    void effect();
 }
