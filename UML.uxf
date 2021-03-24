@@ -4,12 +4,15 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>342</x>
+      <x>351</x>
       <y>657</y>
       <w>171</w>
       <h>135</h>
     </coordinates>
     <panel_attributes>PlayerAvatar
+-
+hand : ArrayList&lt;Card&gt;
+armor : int
 -
 -hp : int
 -energy : int
@@ -25,7 +28,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>648</x>
+      <x>657</x>
       <y>234</y>
       <w>171</w>
       <h>72</h>
@@ -38,26 +41,37 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>558</x>
-      <y>513</y>
-      <w>189</w>
-      <h>108</h>
+      <x>540</x>
+      <y>477</y>
+      <w>243</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>FightRoom
 -
-+useCard(main.Card.Card) : void
+opponents : ArrayList&lt;Entity&gt;
+potion : Potion
+nbTurns : int
+-
++useCard(Card) : void
++playOpponentTurn() : void
++entitiesAmount() : int
++getEntities() : int
++get OpponentMove() : void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>801</x>
+      <x>810</x>
       <y>657</y>
       <w>171</w>
-      <h>81</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>Monster
+-
+name : String
+attack : int
 -
 </panel_attributes>
     <additional_attributes/>
@@ -65,8 +79,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>864</x>
-      <y>243</y>
+      <x>873</x>
+      <y>180</y>
       <w>135</w>
       <h>72</h>
     </coordinates>
@@ -78,7 +92,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>387</x>
+      <x>396</x>
       <y>324</y>
       <w>171</w>
       <h>108</h>
@@ -95,7 +109,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>423</x>
+      <x>432</x>
       <y>612</y>
       <w>486</w>
       <h>63</h>
@@ -106,20 +120,25 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>846</x>
-      <y>378</y>
+      <x>855</x>
+      <y>324</y>
       <w>171</w>
-      <h>54</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>Room
 -
-</panel_attributes>
+-
+enterRoom(Player) : void
+exitRoom() : void
+isOver() : boolean
+getType() : String
+( perfromStep() : void )</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1332</x>
+      <x>1341</x>
       <y>531</y>
       <w>162</w>
       <h>72</h>
@@ -132,7 +151,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1026</x>
+      <x>1035</x>
       <y>531</y>
       <w>162</w>
       <h>72</h>
@@ -145,18 +164,18 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>918</x>
-      <y>306</y>
+      <x>927</x>
+      <y>243</y>
       <w>27</w>
-      <h>90</h>
+      <h>99</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>108</x>
+      <x>117</x>
       <y>234</y>
       <w>117</w>
       <h>72</h>
@@ -169,19 +188,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>657</x>
+      <x>666</x>
       <y>108</y>
       <w>306</w>
-      <h>153</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>m1=0..1
 m2=0.47</panel_attributes>
-    <additional_attributes>300.0;150.0;300.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>300.0;80.0;300.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>522</x>
+      <x>531</x>
       <y>81</y>
       <w>144</w>
       <h>108</h>
@@ -197,7 +216,7 @@ m2=0.47</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>153</x>
+      <x>162</x>
       <y>99</y>
       <w>387</w>
       <h>153</h>
@@ -208,7 +227,7 @@ m2=0.47</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>387</x>
+      <x>396</x>
       <y>234</y>
       <w>171</w>
       <h>54</h>
@@ -222,7 +241,7 @@ m2=0.47</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>468</x>
+      <x>477</x>
       <y>837</y>
       <w>117</w>
       <h>72</h>
@@ -235,7 +254,7 @@ m2=0.47</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>279</x>
+      <x>288</x>
       <y>837</y>
       <w>117</w>
       <h>72</h>
@@ -248,7 +267,7 @@ m2=0.47</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>459</x>
+      <x>468</x>
       <y>180</y>
       <w>288</w>
       <h>72</h>
@@ -259,7 +278,7 @@ m2=0.47</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>459</x>
+      <x>468</x>
       <y>279</y>
       <w>27</w>
       <h>63</h>
@@ -270,18 +289,18 @@ m2=0.47</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
-      <y>423</y>
+      <x>657</x>
+      <y>432</y>
       <w>477</w>
-      <h>126</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>310.0;10.0;310.0;50.0;510.0;50.0;510.0;120.0;510.0;50.0;10.0;50.0;10.0;100.0</additional_attributes>
+    <additional_attributes>310.0;10.0;310.0;40.0;510.0;40.0;510.0;110.0;510.0;40.0;10.0;40.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1098</x>
+      <x>1107</x>
       <y>450</y>
       <w>333</w>
       <h>99</h>
@@ -292,7 +311,7 @@ m2=0.47</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
+      <x>279</x>
       <y>144</y>
       <w>270</w>
       <h>594</h>
@@ -303,7 +322,7 @@ m2=0.47</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
+      <x>459</x>
       <y>783</y>
       <w>90</w>
       <h>72</h>
@@ -314,7 +333,7 @@ m2=0.47</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>324</x>
+      <x>333</x>
       <y>783</y>
       <w>99</w>
       <h>72</h>
