@@ -1,5 +1,9 @@
 package main.Fight;
 
+import main.Card.Card;
+
+import java.util.ArrayList;
+
 public class PlayerAvatar {
     private ArrayList<Card> hand;
     private int armor;
