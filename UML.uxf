@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>234</x>
-      <y>576</y>
+      <y>648</y>
       <w>171</w>
       <h>135</h>
     </coordinates>
@@ -30,7 +30,7 @@ armor : int
     <id>UMLClass</id>
     <coordinates>
       <x>540</x>
-      <y>153</y>
+      <y>225</y>
       <w>171</w>
       <h>72</h>
     </coordinates>
@@ -43,7 +43,7 @@ armor : int
     <id>UMLClass</id>
     <coordinates>
       <x>423</x>
-      <y>396</y>
+      <y>468</y>
       <w>243</w>
       <h>144</h>
     </coordinates>
@@ -65,7 +65,7 @@ nbTurns : int
     <id>UMLClass</id>
     <coordinates>
       <x>693</x>
-      <y>576</y>
+      <y>648</y>
       <w>171</w>
       <h>117</h>
     </coordinates>
@@ -81,7 +81,7 @@ attack : int
     <id>UMLClass</id>
     <coordinates>
       <x>756</x>
-      <y>99</y>
+      <y>171</y>
       <w>135</w>
       <h>72</h>
     </coordinates>
@@ -94,7 +94,7 @@ attack : int
     <id>UMLClass</id>
     <coordinates>
       <x>279</x>
-      <y>243</y>
+      <y>315</y>
       <w>171</w>
       <h>108</h>
     </coordinates>
@@ -110,7 +110,7 @@ attack : int
     <id>Relation</id>
     <coordinates>
       <x>315</x>
-      <y>531</y>
+      <y>603</y>
       <w>486</w>
       <h>63</h>
     </coordinates>
@@ -121,7 +121,7 @@ attack : int
     <id>UMLClass</id>
     <coordinates>
       <x>738</x>
-      <y>243</y>
+      <y>315</y>
       <w>171</w>
       <h>117</h>
     </coordinates>
@@ -139,7 +139,7 @@ getType() : String
     <id>UMLClass</id>
     <coordinates>
       <x>1224</x>
-      <y>450</y>
+      <y>522</y>
       <w>162</w>
       <h>72</h>
     </coordinates>
@@ -152,7 +152,7 @@ getType() : String
     <id>UMLClass</id>
     <coordinates>
       <x>918</x>
-      <y>450</y>
+      <y>522</y>
       <w>162</w>
       <h>72</h>
     </coordinates>
@@ -165,7 +165,7 @@ getType() : String
     <id>Relation</id>
     <coordinates>
       <x>810</x>
-      <y>162</y>
+      <y>234</y>
       <w>27</w>
       <h>99</h>
     </coordinates>
@@ -176,7 +176,7 @@ getType() : String
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>153</y>
+      <y>225</y>
       <w>117</w>
       <h>72</h>
     </coordinates>
@@ -189,7 +189,7 @@ getType() : String
     <id>Relation</id>
     <coordinates>
       <x>549</x>
-      <y>27</y>
+      <y>99</y>
       <w>306</w>
       <h>90</h>
     </coordinates>
@@ -201,7 +201,7 @@ m2=0.47</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>414</x>
-      <y>0</y>
+      <y>72</y>
       <w>144</w>
       <h>108</h>
     </coordinates>
@@ -217,7 +217,7 @@ m2=0.47</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>45</x>
-      <y>18</y>
+      <y>90</y>
       <w>387</w>
       <h>153</h>
     </coordinates>
@@ -228,7 +228,7 @@ m2=0.47</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>279</x>
-      <y>153</y>
+      <y>225</y>
       <w>171</w>
       <h>54</h>
     </coordinates>
@@ -242,7 +242,7 @@ m2=0.47</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>360</x>
-      <y>756</y>
+      <y>828</y>
       <w>117</w>
       <h>72</h>
     </coordinates>
@@ -255,7 +255,7 @@ m2=0.47</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>171</x>
-      <y>756</y>
+      <y>828</y>
       <w>117</w>
       <h>72</h>
     </coordinates>
@@ -268,7 +268,7 @@ m2=0.47</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>351</x>
-      <y>99</y>
+      <y>171</y>
       <w>288</w>
       <h>72</h>
     </coordinates>
@@ -279,7 +279,7 @@ m2=0.47</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>351</x>
-      <y>198</y>
+      <y>270</y>
       <w>27</w>
       <h>63</h>
     </coordinates>
@@ -290,7 +290,7 @@ m2=0.47</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>540</x>
-      <y>351</y>
+      <y>423</y>
       <w>477</w>
       <h>117</h>
     </coordinates>
@@ -301,7 +301,7 @@ m2=0.47</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>990</x>
-      <y>369</y>
+      <y>441</y>
       <w>333</w>
       <h>99</h>
     </coordinates>
@@ -312,7 +312,7 @@ m2=0.47</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>162</x>
-      <y>63</y>
+      <y>135</y>
       <w>270</w>
       <h>594</h>
     </coordinates>
@@ -323,7 +323,7 @@ m2=0.47</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>342</x>
-      <y>702</y>
+      <y>774</y>
       <w>90</w>
       <h>72</h>
     </coordinates>
@@ -334,7 +334,7 @@ m2=0.47</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>216</x>
-      <y>702</y>
+      <y>774</y>
       <w>99</w>
       <h>72</h>
     </coordinates>
