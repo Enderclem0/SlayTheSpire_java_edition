@@ -1,5 +1,7 @@
 package main;
 
+import main.Room.Room;
+
 public class UI {
     private static UI instance=null;
     private UI(){ }
@@ -11,5 +13,7 @@ public class UI {
     }
 
     public void gameOver() {
+    }
+    public void startRoom(Room room){
     }
 }
