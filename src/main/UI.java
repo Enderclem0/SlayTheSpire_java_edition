@@ -1,9 +1,6 @@
 package main;
 
-import main.Fight.FightEntity;
-import main.Fight.FightRoom;
-import main.Fight.Opponent;
-import main.Fight.PlayerAvatar;
+import main.Fight.*;
 import main.Room.Room;
 
 import java.util.ArrayList;
@@ -32,7 +29,6 @@ public class UI {
         ArrayList<FightEntity> entities = new ArrayList<FightEntity>();
         entities.add(p1);
         entities.add(o1);
-
         FightRoom fightRoom = new FightRoom(entities, );
 
 
