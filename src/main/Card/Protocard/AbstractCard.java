@@ -1,6 +1,6 @@
 package main.Card.Protocard;
 
-abstract class AbstractCard {
+public abstract class AbstractCard {
     int energyCost;
     String name;
     enum Type{
