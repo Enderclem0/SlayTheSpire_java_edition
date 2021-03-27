@@ -1,6 +1,6 @@
 package main.Fight;
 
-import main.Card.ProtoCard;
+import main.Card.Protocard.ProtoCard;
 
 import java.util.ArrayList;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package main.Card;
+package main.Card.Protocard;
 
 import main.Fight.FightRoom;
 

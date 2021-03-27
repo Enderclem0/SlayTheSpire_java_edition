@@ -1,5 +1,7 @@
 package main.Card;
 
+import main.Card.Protocard.ProtoCard;
+
 import java.util.HashSet;
 
 public abstract class CardBuilder {
