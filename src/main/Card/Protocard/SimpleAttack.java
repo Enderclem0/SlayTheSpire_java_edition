@@ -11,7 +11,7 @@ public class SimpleAttack extends AbstractCard implements ProtoCard {
     private int damage;
     private final Target target;
     public SimpleAttack(int energyCost,String name,Type type,int damage,Target target){
-        super();
+        super(energyCost,name,type);
         Objects.requireNonNull(target);
         this.damage=damage;
         this.target=target;

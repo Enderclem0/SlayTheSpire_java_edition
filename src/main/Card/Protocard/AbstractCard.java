@@ -3,7 +3,7 @@ package main.Card.Protocard;
 abstract class AbstractCard {
     int energyCost;
     String name;
-    static enum Type{
+    enum Type{
         ATTACK,SKILL,POWER,STATUS,CURSE
     }
     Type type;
@@ -12,5 +12,8 @@ abstract class AbstractCard {
         this.energyCost=energyCost;
         this.name=name;
         this.type=type;
+    }
+    boolean isUseable(int energy){
+        return energy>=energyCost;
     }
 }
