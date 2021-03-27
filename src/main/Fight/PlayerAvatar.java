@@ -1,24 +1,20 @@
 package main.Fight;
 
 import main.Card.Card;
+import main.Player;
 
 import java.util.ArrayList;
 
-public class PlayerAvatar {
+public class PlayerAvatar extends Player implements FightEntity {
     private ArrayList<Card> hand;
-    private int armor;
-    private int hp;
-    private int energy;
-    private int hpMax;
-    private int energyMax;
 
-    public PlayerAvatar(ArrayList<Card> hand, int armor, int hp, int energy, int hpMax, int energyMax) {
+    public PlayerAvatar(int hp, int energy, int hpMax, int energyMax, ArrayList<Card> hand) {
+        super(hp, energy, hpMax, energyMax);
         this.hand = hand;
-        this.armor = armor;
-        this.hp = hp;
-        this.energy = energy;
-        this.hpMax = hpMax;
-        this.energyMax = energyMax;
     }
 
+    @Override
+    public boolean takeDamage(int dmg) {
+        return super.damageHp(dmg);
+    }
 }

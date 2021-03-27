@@ -7,16 +7,15 @@ import java.util.ArrayList;
 public class FightRoom {
     private ArrayList<Opponent> opponents;
     private Potion potion;
-    private int nbTurns;
+    private int nbTurns=0;
 
-    public FightRoom(ArrayList<Opponent> opponents, Potion potion, int nbTurns) {
+    public FightRoom(ArrayList<Opponent> opponents, Potion potion) {
         this.opponents = opponents;
         this.potion = potion;
-        this.nbTurns = nbTurns;
     }
 
-    public void useCard(Card card) {
-        // ...
+    public void useCard(Card card,Target target) {
+
     }
 
     public void playOpponentTurn() {

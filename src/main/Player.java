@@ -16,12 +16,9 @@ public class Player {
         this.hpMax = hpMax;
         this.energyMax = energyMax;
     }
-    public void damageHp(int dmg){
+    public boolean damageHp(int dmg){
         hp-=dmg;
-        if (hp<=0){
-            UI ui=UI.getUI();
-            ui.gameOver();
-        }
+        return hp <= 0;
     }
     public void healHp(int heal){
         hp+=heal;
