@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Potion {
     private String name;
-    private enum Rarity {
+    enum Rarity {
         COMMON, UNCOMMON
     }
     Rarity rarity;

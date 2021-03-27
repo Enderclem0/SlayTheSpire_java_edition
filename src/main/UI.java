@@ -1,6 +1,5 @@
 package main;
 
-import main.Card.Card;
 import main.Fight.FightEntity;
 import main.Fight.FightRoom;
 import main.Fight.Opponent;
@@ -8,7 +7,6 @@ import main.Fight.PlayerAvatar;
 import main.Room.Room;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class UI {
     private static UI instance=null;
@@ -23,11 +21,6 @@ public class UI {
     public void gameOver() {
     }
     public void startRoom(Room room){
-    }
-    public void addCardToDeck(Card card) {
-        if (card instanceof Card) {
-            // ...
-        }
     }
 
     public static void main(String[] args) {
