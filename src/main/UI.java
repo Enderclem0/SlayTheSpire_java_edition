@@ -1,6 +1,14 @@
 package main;
 
+import main.Card.Card;
+import main.Fight.FightEntity;
+import main.Fight.FightRoom;
+import main.Fight.Opponent;
+import main.Fight.PlayerAvatar;
 import main.Room.Room;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class UI {
     private static UI instance=null;
@@ -15,5 +23,41 @@ public class UI {
     public void gameOver() {
     }
     public void startRoom(Room room){
+    }
+    public void addCardToDeck(Card card) {
+        if (card instanceof Card) {
+            // ...
+        }
+    }
+
+    public static void main(String[] args) {
+        // Initialiser Player et Opponent
+        // Initialiser le deck du Player
+        PlayerAvatar p1 = new PlayerAvatar(20, 20, 20, 20);
+        Opponent o1 = new Opponent("Dwarf", 7, 25);
+
+        ArrayList<FightEntity> entities = new ArrayList<FightEntity>();
+        entities.add(p1);
+        entities.add(o1);
+
+        FightRoom fightRoom = new FightRoom(entities, );
+
+
+        Card c1 =
+
+
+
+        // Player attack --> Opponent
+        // Opponent attack -- > Player
+        while(true) {
+
+
+
+            if (p1.isDead()){
+                gameOver();
+            } else if (o1.isDead()) {
+                System.out.println("");
+            }
+        }
     }
 }

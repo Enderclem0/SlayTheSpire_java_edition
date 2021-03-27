@@ -1,4 +1,4 @@
 package main;
 
-public enum Effect {
+public enum +Effect {
 }
