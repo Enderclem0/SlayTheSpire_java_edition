@@ -31,6 +31,11 @@ public class UI {
         entities.add(o1);
         FightRoom fightRoom = new FightRoom(entities, );
 
+
+        Card c1 =
+
+
+
         // Player attack --> Opponent
         // Opponent attack -- > Player
         while(true) {

@@ -15,7 +15,11 @@ public class PlayerAvatar extends Player implements FightEntity {
 
     }
     @Override
-    public boolean takeDamage(int dmg) {
-        return super.damageHp(dmg);
+    public void takeDamage(int dmg) {
+        damageHp(dmg);
+    }
+
+    public boolean isDead() {
+        return hp <= 0;
     }
 }

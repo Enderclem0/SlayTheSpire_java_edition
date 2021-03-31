@@ -9,8 +9,12 @@ public class Opponent implements FightEntity {
     }
 
     @Override
-    public boolean takeDamage(int dmg) {
+    public void takeDamage(int dmg) {
         hp-=dmg;
-        return hp<=0;
+    }
+
+    @Override
+    public boolean isDead() {
+        return hp <= 0;
     }
 }
