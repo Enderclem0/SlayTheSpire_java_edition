@@ -15,7 +15,11 @@ public class UI {
         return instance;
     }
 
-    public void gameOver() {
+    public static void gameOver() {
+        System.out.println("Perdu");
+    }
+    public void gameWin() {
+        System.out.println("Gagner");
     }
     public void startRoom(Room room){
     }
@@ -23,30 +27,22 @@ public class UI {
     public static void main(String[] args) {
         // Initialiser Player et Opponent
         // Initialiser le deck du Player
-        PlayerAvatar p1 = new PlayerAvatar(20, 20, 20, 20);
-        Opponent o1 = new Opponent("Dwarf", 7, 25);
+        // Player attack --> Opponent
+        // Opponent attack -- > Player
+        PlayerAvatar p1 = new PlayerAvatar(20, 20, 20, 20);                 // Joueur
+        Opponent o1 = new Opponent("Dwarf", 12);                                             // Ennemi
+        Potion potion1 = new Potion("Elixir", Potion.Rarity.COMMON, "Heal 10hp");          // Potion
 
+        // Initialisation de la fight room
         ArrayList<FightEntity> entities = new ArrayList<FightEntity>();
         entities.add(p1);
         entities.add(o1);
-        FightRoom fightRoom = new FightRoom(entities, );
+        FightRoom fightRoom = new FightRoom(entities, potion1);
 
 
-        Card c1 =
-
-
-
-        // Player attack --> Opponent
-        // Opponent attack -- > Player
-        while(true) {
-
-
-
-            if (p1.isDead()){
-                gameOver();
-            } else if (o1.isDead()) {
-                System.out.println("");
-            }
+        // Boucle de jeu
+        while (!(fightRoom.isFightOver())) {
+            // ...
         }
     }
 }

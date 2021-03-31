@@ -6,7 +6,7 @@ import main.Card.Protocard.ProtoCard;
 import java.util.Objects;
 
 public class Player {
-    private int hp;
+    protected int hp;
     private int energy;
     private int hpMax;
     private int energyMax;
@@ -19,9 +19,8 @@ public class Player {
         this.hpMax = hpMax;
         this.energyMax = energyMax;
     }
-    public boolean damageHp(int dmg){
+    public void damageHp(int dmg){
         hp-=dmg;
-        return hp <= 0;
     }
     public void healHp(int heal){
         hp+=heal;

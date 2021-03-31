@@ -1,5 +1,7 @@
 package main.Fight;
 
 public interface FightEntity {
-    public boolean takeDamage(int dmg);
+    public void takeDamage(int dmg);
+
+    public boolean isDead();
 }
