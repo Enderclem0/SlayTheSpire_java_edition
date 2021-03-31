@@ -1,7 +1,7 @@
 package main;
 
+import main.Card.Card;
 import main.Card.CardPile;
-import main.Card.Protocard.ProtoCard;
 
 import java.util.Objects;
 
@@ -29,7 +29,7 @@ public class Player {
             hp=hpMax;
         }
     }
-    public void AddCard(ProtoCard card){
+    public void AddCard(Card card){
         Objects.requireNonNull(card);
         deck.push(card);
     }

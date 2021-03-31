@@ -1,13 +1,11 @@
 package main.Card;
 
-import main.Card.Protocard.ProtoCard;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 
 public class CardPile{
-    private final ArrayList<ProtoCard> pile = new ArrayList<>();
+    private final ArrayList<Card> pile = new ArrayList<>();
     public boolean isEmpty() {
         return pile.isEmpty();
     }
@@ -16,16 +14,16 @@ public class CardPile{
         return false;
     }
 
-    public void push(ProtoCard item) {
+    public void push(Card item) {
         Objects.requireNonNull(item);
         pile.add(item);
     }
 
-    public ProtoCard peek() {
+    public Card peek() {
         return pile.get(-1);
     }
 
-    public ProtoCard pop() {
+    public Card pop() {
         return pile.remove(-1);
     }
     public void shuffle(){

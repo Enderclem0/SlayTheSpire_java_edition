@@ -17,12 +17,6 @@ public class FightRoom {
         this.potion = potion;
     }
 
-    public void useCard(ProtoCard card,int position) {
-        Objects.requireNonNull(card);
-
-        card.effect(this,position);
-    }
-
     public void playOpponentTurn() {
         for (int i = 1;i<entities.size();i++){
             entities.get(i).
