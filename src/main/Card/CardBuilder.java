@@ -1,7 +1,7 @@
 package main.Card;
 
 
-public abstract class CardBuilder {
+public class CardBuilder {
     private static CardBuilder instance = null;
     private int unlockNumber;
     private static enum Color{
@@ -14,6 +14,9 @@ public abstract class CardBuilder {
         }
         return instance;
     }
-    public abstract Card createCard(String name, String type,int energyCost);
+
+    public Card createCard(String name, String type, int energyCost) {
+        return null;
+    }
 
 }

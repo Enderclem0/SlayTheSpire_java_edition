@@ -1,5 +1,6 @@
 package main;
 
+import main.Card.Card;
 import main.Fight.*;
 import main.Room.Room;
 
@@ -15,7 +16,7 @@ public class UI {
         return instance;
     }
 
-    public void gameOver() {
+    private static void gameOver() {
     }
     public void startRoom(Room room){
     }
@@ -24,18 +25,12 @@ public class UI {
         // Initialiser Player et Opponent
         // Initialiser le deck du Player
         PlayerAvatar p1 = new PlayerAvatar(20, 20, 20, 20);
-        Opponent o1 = new Opponent("Dwarf", 7, 25);
+        Opponent o1 = new Opponent("Dwarf", 7);
 
         ArrayList<FightEntity> entities = new ArrayList<FightEntity>();
         entities.add(p1);
         entities.add(o1);
-        FightRoom fightRoom = new FightRoom(entities, );
-
-
-        Card c1 =
-
-
-
+        FightRoom fightRoom = new FightRoom(entities,null);
         // Player attack --> Opponent
         // Opponent attack -- > Player
         while(true) {

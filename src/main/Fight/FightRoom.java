@@ -1,7 +1,5 @@
 package main.Fight;
 
-import main.Card.Protocard.ProtoCard;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -65,9 +63,6 @@ public class FightRoom {
 
         if (opponentDead == opponentAmount()) {
             return true;
-        } else if (getPlayer().isDead()) {
-            return true;
-        }
-        return false;
+        } else return getPlayer().isDead();
     }
 }
