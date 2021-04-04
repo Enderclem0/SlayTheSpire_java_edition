@@ -31,10 +31,10 @@ public class FightRoom {
     public ArrayList<FightEntity> getAllEntities() {
         return entitiesList;
     }
-    public ArrayList<FightEntity> getAllOpponents() {
-        ArrayList<FightEntity> opponents = new ArrayList<>();
+    public ArrayList<Opponent> getAllOpponents() {
+        ArrayList<Opponent> opponents = new ArrayList<>();
         for(int i = 1; i< entitiesList.size(); i++){
-            opponents.add(entitiesList.get(i));
+            opponents.add((Opponent) entitiesList.get(i));
         }
         return opponents;
     }

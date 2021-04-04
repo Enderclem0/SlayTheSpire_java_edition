@@ -34,9 +34,6 @@ public class UI {
         // Player attack --> Opponent
         // Opponent attack -- > Player
         while(true) {
-
-
-
             if (p1.isDead()){
                 gameOver();
             } else if (o1.isDead()) {
