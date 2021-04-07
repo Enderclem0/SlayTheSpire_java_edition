@@ -1,4 +1,17 @@
 package main.Card;
 
-public class BlockStrategy {
+import main.Fight.PlayerAvatar;
+
+public class BlockStrategy implements CardStrategy{
+    int block;
+    @Override
+    public void playStrat(Object obj) {
+        PlayerAvatar player = (PlayerAvatar) obj;
+        player.addBlock(block);
+    }
+
+    @Override
+    public Card.targetType getTarget() {
+        return null;
+    }
 }

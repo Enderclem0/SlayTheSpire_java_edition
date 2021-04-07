@@ -24,7 +24,12 @@ public class PlayerAvatar extends Player implements FightEntity {
         else {rest=dmg;}
         damageHp(rest);
     }
-
+    public void addBlock(int shield){
+        block+=shield;
+    }
+    public void resetBlock(){
+        block = 0;
+    }
     public boolean isDead() {
         return hp <= 0;
     }
