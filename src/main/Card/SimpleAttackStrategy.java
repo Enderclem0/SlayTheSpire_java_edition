@@ -1,6 +1,6 @@
-package SlayTheSpire.src.Card;
+package main.Card;
 
-import SlayTheSpire.src.Fight.Opponent;
+import main.Fight.Opponent;
 
 public class SimpleAttackStrategy implements CardStrategy {
     int dmg;

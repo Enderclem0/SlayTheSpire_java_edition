@@ -1,4 +1,4 @@
-package SlayTheSpire.src;
+package main;
 
 public class GameMap {
 

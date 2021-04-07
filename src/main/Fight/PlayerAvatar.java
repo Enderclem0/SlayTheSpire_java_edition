@@ -1,4 +1,4 @@
-package SlayTheSpire.src.Fight;
+package main.Fight;
 
 import main.Card.Hand;
 import main.Player;

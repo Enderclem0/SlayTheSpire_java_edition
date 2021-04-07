@@ -1,7 +1,7 @@
-package SlayTheSpire.src;
+package main;
 
-import SlayTheSpire.src.Card.Card;
-import SlayTheSpire.src.Card.CardPile;
+import main.Card.Card;
+import main.Card.CardPile;
 
 import java.util.Objects;
 

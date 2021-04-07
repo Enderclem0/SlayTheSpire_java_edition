@@ -1,4 +1,4 @@
-package SlayTheSpire.src.Fight;
+package main.Fight;
 
 public interface FightEntity {
     public void takeDamage(int dmg);
