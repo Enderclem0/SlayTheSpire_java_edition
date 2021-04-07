@@ -12,7 +12,7 @@ public class Player {
     private int energyMax;
     private int gold;
     private int currentStage=0;
-    private CardPile deck = new CardPile();
+    private final CardPile deck = new CardPile();
     public Player(int hp, int energy, int hpMax, int energyMax) {
         this.hp = hp;
         this.energy = energy;
