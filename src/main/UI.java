@@ -1,7 +1,8 @@
-package SlayTheSpire.src;
+package main;
 
-import SlayTheSpire.src.Fight.*;
-import SlayTheSpire.src.Room.Room;
+import main.Card.Card;
+import main.Fight.*;
+import main.Room.Room;
 
 import java.util.ArrayList;
 
@@ -15,6 +16,8 @@ public class UI {
         return instance;
     }
 
+    private static void gameOver() {
+    }
     public void startRoom(Room room){
     }
 
@@ -22,21 +25,20 @@ public class UI {
         // Initialiser Player et Opponent
         // Initialiser le deck du Player
         PlayerAvatar p1 = new PlayerAvatar(20, 20, 20, 20);
-        Opponent o1 = new Opponent("Dwarf", 12);
-        Potion potion1 = new Potion("Elixir", Potion.Rarity.COMMON, "Heal 10hp");
+        Opponent o1 = new Opponent("Dwarf", 7);
 
-        // Initialisation de la fight room
         ArrayList<FightEntity> entities = new ArrayList<FightEntity>();
         entities.add(p1);
         entities.add(o1);
-        FightRoom fightRoom = new FightRoom(entities,potion1);
-
-
-
+        FightRoom fightRoom = new FightRoom(entities,null);
         // Player attack --> Opponent
         // Opponent attack -- > Player
-        while (!(fightRoom.isFightOver())) {
-            // ...
+        while(true) {
+            if (p1.isDead()){
+                gameOver();
+            } else if (o1.isDead()) {
+                System.out.println("");
+            }
         }
     }
 }
