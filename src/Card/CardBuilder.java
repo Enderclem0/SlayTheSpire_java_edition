@@ -1,4 +1,4 @@
-package main.Card;
+package SlayTheSpire.src.Card;
 
 
 public class CardBuilder {

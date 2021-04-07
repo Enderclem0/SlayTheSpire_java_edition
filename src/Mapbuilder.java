@@ -1,4 +1,4 @@
-package main;
+package SlayTheSpire.src;
 
 import java.util.HashMap;
 import java.util.Map;

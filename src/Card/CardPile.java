@@ -1,4 +1,4 @@
-package main.Card;
+package SlayTheSpire.src.Card;
 
 import java.util.ArrayList;
 import java.util.Collections;

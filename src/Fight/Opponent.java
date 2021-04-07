@@ -1,4 +1,4 @@
-package main.Fight;
+package SlayTheSpire.src.Fight;
 
 public class Opponent implements FightEntity {
     private String name;

@@ -1,7 +1,7 @@
-package main.Card;
+package SlayTheSpire.src.Card;
 
-import main.Fight.FightRoom;
-import main.Fight.Opponent;
+import SlayTheSpire.src.Fight.FightRoom;
+import SlayTheSpire.src.Fight.Opponent;
 
 import java.util.ArrayList;
 

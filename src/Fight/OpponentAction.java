@@ -1,4 +1,4 @@
-package main.Fight;
+package SlayTheSpire.src.Fight;
 
 public class OpponentAction {
     private int action;

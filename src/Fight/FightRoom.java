@@ -1,4 +1,4 @@
-package main.Fight;
+package SlayTheSpire.src.Fight;
 
 import java.util.ArrayList;
 import java.util.Objects;
