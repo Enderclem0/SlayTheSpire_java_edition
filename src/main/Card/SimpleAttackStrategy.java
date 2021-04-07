@@ -6,8 +6,8 @@ public class SimpleAttackStrategy implements CardStrategy {
     int dmg;
     @Override
     public void playStrat(Object obj) {
-        Opponent ennemy = (Opponent) obj;
-        ennemy.takeDamage(dmg);
+        Opponent enemy = (Opponent) obj;
+        enemy.takeDamage(dmg);
     }
 
     @Override

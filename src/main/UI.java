@@ -1,7 +1,9 @@
 package main;
 
-import main.Card.Card;
-import main.Fight.*;
+import main.Fight.FightEntity;
+import main.Fight.FightRoom;
+import main.Fight.Opponent;
+import main.Fight.PlayerAvatar;
 import main.Room.Room;
 
 import java.util.ArrayList;
