@@ -23,7 +23,7 @@ public class UI {
     public static void main(String[] args) {
         // Initialiser Player et Opponent
         PlayerAvatar p1 = new PlayerAvatar(20, 20, 20, 20);
-        Opponent o1 = new Opponent("Dwarf", 12);
+        Opponent o1 = new Opponent("Dwarf", possibleAction, 12);
         Potion potion1 = new Potion("Elixir", Potion.Rarity.COMMON, "Heal 10hp");
 
         // Initialisation de la fight room

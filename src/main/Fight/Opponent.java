@@ -1,10 +1,14 @@
 package main.Fight;
 
+import java.util.ArrayList;
+
 public class Opponent implements FightEntity {
-    private String name;
+    private final String name;
+    private final ArrayList<Action> possibleAction;
     private int hp;
-    public Opponent(String name, int hp){
+    public Opponent(String name, ArrayList<Action> possibleAction, int hp){
         this.name = name;
+        this.possibleAction = possibleAction;
         this.hp = hp;
     }
 
