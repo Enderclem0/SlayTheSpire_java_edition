@@ -9,7 +9,7 @@ public class AbstractAction {
         Buff,Debuff,Damage,Shield
     };
     private final ActionType type;
-    public String getType(){
-        return type.toString();
+    public ActionType getType(){
+        return type;
     }
 }

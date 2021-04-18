@@ -1,9 +1,12 @@
 package main;
 
+import main.Fight.PlayerAvatar;
+
 public interface Display {
-    void getDisplay();
+    TextDisplay getDisplay();
     void displayUI();
-    void displayPlayer();
+    void displayPlayerAvatar(PlayerAvatar playerAvatar);
+    void displayPlayer(Player player);
     void displayOpponents();
     void displayCards();
 }

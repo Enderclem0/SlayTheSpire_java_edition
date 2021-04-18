@@ -7,9 +7,9 @@ import java.util.Objects;
 
 public class Player {
     protected int hp;
-    private int energy;
-    private int hpMax;
-    private int energyMax;
+    protected int energy;
+    protected int hpMax;
+    protected int energyMax;
     private int gold;
     private int currentStage=0;
     private final CardPile deck = new CardPile();
