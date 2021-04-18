@@ -16,4 +16,12 @@ public class Hand {
     public boolean removeCard(Card card){
         return cards.remove(card);
     }
+    @Override
+    public String toString(){
+        StringBuilder ret = new StringBuilder();
+        for (Card card : cards) {
+            ret.append(card.toString()).append("\n");
+        }
+        return ret.toString();
+    }
 }

@@ -1,5 +1,7 @@
 package main.Fight;
 
+import main.Player;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -16,12 +18,13 @@ public class FightRoom {
     }
 
     public void playOpponentTurn() {
-        for (int i = 1; i< entitiesList.size(); i++){
-            // entitiesList.get(i).
+        ArrayList<Opponent> ennemies = getAllOpponents();
+        for (Opponent enemy : ennemies) {
+            enemy.playNextAction(getPlayer());
         }
     }
-    public FightEntity getPlayer(){
-        return entitiesList.get(0);
+    public PlayerAvatar getPlayer(){
+        return (PlayerAvatar) entitiesList.get(0);
     }
 
     public int opponentAmount() {
@@ -38,15 +41,15 @@ public class FightRoom {
         }
         return opponents;
     }
-    public FightEntity getOpponent(int position){
+    public Opponent getOpponent(int position){
         if (position> entitiesList.size()-1 || position<=0){
             throw new IllegalArgumentException("Position must be above 0 and below the number of entities");
         }
-        return entitiesList.get(position);
+        return (Opponent) entitiesList.get(position);
     }
 
-    public void getOpponentMove() {
-        // ...
+    public AbstractAction.ActionType getOpponentMove(int position) {
+        return getOpponent(position).getNextActionType();
     }
 
     public void makeOpponentDie(int position) {

@@ -3,6 +3,7 @@ package main.Fight;
 import main.Card.Hand;
 import main.Player;
 
+
 public class PlayerAvatar extends Player implements FightEntity {
     private final Hand hand = new Hand();
     private final int currentEnergy;
@@ -23,6 +24,9 @@ public class PlayerAvatar extends Player implements FightEntity {
         }
         else {rest=dmg;}
         damageHp(rest);
+    }
+    public Hand getHand(){
+        return hand;
     }
     public void addBlock(int shield){
         block+=shield;

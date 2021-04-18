@@ -1,6 +1,11 @@
 package main;
 
+import main.Card.Hand;
+import main.Fight.FightRoom;
+import main.Fight.Opponent;
 import main.Fight.PlayerAvatar;
+
+import java.util.ArrayList;
 
 public class TextDisplay implements Display {
     private static TextDisplay instance = null;
@@ -25,7 +30,6 @@ public class TextDisplay implements Display {
         System.out.println("Joueur 1:");
         System.out.println("Health: "+playerAvatar.hp+"/"+playerAvatar.hpMax);
         System.out.println("Energy:"+playerAvatar.energyMax+"/"+playerAvatar.energyMax);
-        System.out.println("Hand:");
     }
 
     @Override
@@ -34,12 +38,15 @@ public class TextDisplay implements Display {
     }
 
     @Override
-    public void displayOpponents() {
-
+    public void displayOpponents(FightRoom fightRoom) {
+        ArrayList<Opponent> ennemies = fightRoom.getAllOpponents();
+        for (Opponent ennemy : ennemies) {
+            System.out.println(ennemy+" next action:"+ennemy.getNextActionType()+"\n");
+        }
     }
 
     @Override
-    public void displayCards() {
-
+    public void displayHand(Hand hand) {
+        System.out.println("Hand: "+hand);
     }
 }

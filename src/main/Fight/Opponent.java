@@ -1,12 +1,14 @@
 package main.Fight;
 
+import main.Player;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Opponent implements FightEntity {
     private final String name;
     private final ArrayList<Action> possibleAction;
-    private AbstractAction.ActionType nextAction;
+    private Action nextAction;
     private int hp;
     private int block = 0;
     public Opponent(String name, ArrayList<Action> possibleAction, int hp){
@@ -14,13 +16,18 @@ public class Opponent implements FightEntity {
         this.possibleAction = possibleAction;
         this.hp = hp;
     }
-    public AbstractAction.ActionType getNextAction(){
-        return nextAction;
+    public AbstractAction.ActionType getNextActionType(){
+        return nextAction.getType();
     }
     public void randomizeNextAction(){
         Random random = new Random();
-
-        nextAction = possibleAction.get(random.nextInt(possibleAction.size()-1)).getType();
+        nextAction = possibleAction.get(random.nextInt(possibleAction.size()-1));
+    }
+    public void playNextAction(PlayerAvatar playerAvatar){
+        switch (nextAction.getType()){
+            case Buff, Shield -> nextAction.perform(this);
+            case Damage, Debuff -> nextAction.perform(playerAvatar);
+        }
     }
     @Override
     public void takeDamage(int dmg) {
@@ -30,6 +37,11 @@ public class Opponent implements FightEntity {
     @Override
     public boolean isDead() {
         return hp <= 0;
+    }
+
+    @Override
+    public String toString(){
+        return name+" health: "+hp+" block: "+block;
     }
 
     public void addBlock(int shield){
