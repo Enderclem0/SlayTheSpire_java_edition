@@ -23,11 +23,14 @@ public class UI {
     public static void main(String[] args) {
         // Initialiser Player et Opponent
         PlayerAvatar p1 = new PlayerAvatar(20, 20, 20, 20);
+        ArrayList<Action> possibleAction = new ArrayList<>();
+        possibleAction.add(new ActionAttack(5));
+        possibleAction.add(new ActionBlock(5));
         Opponent o1 = new Opponent("Dwarf", possibleAction, 12);
         Potion potion1 = new Potion("Elixir", Potion.Rarity.COMMON, "Heal 10hp");
 
         // Initialisation de la fight room
-        ArrayList<FightEntity> entities = new ArrayList<FightEntity>();
+        ArrayList<FightEntity> entities = new ArrayList<>();
         entities.add(p1);
         entities.add(o1);
         FightRoom fightRoom = new FightRoom(entities,potion1);

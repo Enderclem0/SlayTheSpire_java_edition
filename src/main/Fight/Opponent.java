@@ -6,6 +6,7 @@ public class Opponent implements FightEntity {
     private final String name;
     private final ArrayList<Action> possibleAction;
     private int hp;
+    private int block = 0;
     public Opponent(String name, ArrayList<Action> possibleAction, int hp){
         this.name = name;
         this.possibleAction = possibleAction;
@@ -20,5 +21,12 @@ public class Opponent implements FightEntity {
     @Override
     public boolean isDead() {
         return hp <= 0;
+    }
+
+    public void addBlock(int shield){
+        block+=shield;
+    }
+    public void resetBlock(){
+        block = 0;
     }
 }

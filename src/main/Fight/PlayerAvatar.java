@@ -5,7 +5,7 @@ import main.Player;
 
 public class PlayerAvatar extends Player implements FightEntity {
     private final Hand hand = new Hand();
-    private int currentEnergy;
+    private final int currentEnergy;
     private int block;
 
     public PlayerAvatar(int hp, int energy, int hpMax, int energyMax) {

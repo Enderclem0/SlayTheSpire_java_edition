@@ -1,11 +1,9 @@
 package main.Fight;
 
-import main.Player;
-
 public class ActionAttack extends AbstractAction implements Action{
     private final int amount;
-    public ActionAttack(ActionType type, int amount) {
-        super(type);
+    public ActionAttack(int amount) {
+        super(ActionType.Damage);
         this.amount = amount;
     }
 
