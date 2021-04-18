@@ -15,6 +15,7 @@ public class Opponent implements FightEntity {
         this.name = name;
         this.possibleAction = possibleAction;
         this.hp = hp;
+        randomizeNextAction();
     }
     public AbstractAction.ActionType getNextActionType(){
         return nextAction.getType();

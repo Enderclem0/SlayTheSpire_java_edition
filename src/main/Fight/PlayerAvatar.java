@@ -1,11 +1,15 @@
 package main.Fight;
 
+import main.Card.Card;
+import main.Card.CardPile;
 import main.Card.Hand;
 import main.Player;
 
 
 public class PlayerAvatar extends Player implements FightEntity {
     private final Hand hand = new Hand();
+    private final CardPile discard = new CardPile();
+    private final CardPile draw = this.deck;
     private final int currentEnergy;
     private int block;
 
@@ -25,8 +29,20 @@ public class PlayerAvatar extends Player implements FightEntity {
         else {rest=dmg;}
         damageHp(rest);
     }
+    public void draw(int amount){
+        int drawEmpty = hand.draw(draw,amount);
+        if(!(hand.draw(draw,amount)==0)){
+
+        }
+    }
     public Hand getHand(){
         return hand;
+    }
+    public Card getCard(int num){
+        return hand.getCard(num);
+    }
+    public int getNumberOfCard(){
+        return hand.getSize();
     }
     public void addBlock(int shield){
         block+=shield;

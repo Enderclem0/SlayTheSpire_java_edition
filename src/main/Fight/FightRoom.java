@@ -1,6 +1,7 @@
 package main.Fight;
 
 import main.Player;
+import main.UI;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -12,16 +13,25 @@ public class FightRoom {
 
     public FightRoom(ArrayList<FightEntity> entities, Potion potion) {
         Objects.requireNonNull(entities);
-        Objects.requireNonNull(potion);
         this.entitiesList = entities;
         this.potion = potion;
     }
+    public void playPlayerTurn(){
+        PlayerAvatar playerAvatar = getPlayer();
+        playerAvatar.draw((nbTurns==0)?5:1);
 
+    }
+    public int choseCard(int numberOfCard){
+        UI ui = UI.getUI();
+        return ui.getUserInput();
+    }
     public void playOpponentTurn() {
         ArrayList<Opponent> ennemies = getAllOpponents();
         for (Opponent enemy : ennemies) {
             enemy.playNextAction(getPlayer());
+            enemy.randomizeNextAction();
         }
+        nbTurns++;
     }
     public PlayerAvatar getPlayer(){
         return (PlayerAvatar) entitiesList.get(0);

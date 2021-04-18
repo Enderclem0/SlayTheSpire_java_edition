@@ -12,12 +12,19 @@ public class TextDisplay implements Display {
     private TextDisplay(){
     }
 
-    @Override
-    public TextDisplay getDisplay() {
+    public static TextDisplay getDisplay() {
         if (instance==null){
             instance = new TextDisplay();
         }
         return instance;
+    }
+
+    @Override
+    public void displayFight(FightRoom fightRoom) {
+        PlayerAvatar playerAvatar = fightRoom.getPlayer();
+        displayPlayerAvatar(playerAvatar);
+        displayHand(playerAvatar.getHand());
+        displayOpponents(fightRoom.getAllOpponents());
     }
 
     @Override
@@ -38,10 +45,9 @@ public class TextDisplay implements Display {
     }
 
     @Override
-    public void displayOpponents(FightRoom fightRoom) {
-        ArrayList<Opponent> ennemies = fightRoom.getAllOpponents();
-        for (Opponent ennemy : ennemies) {
-            System.out.println(ennemy+" next action:"+ennemy.getNextActionType()+"\n");
+    public void displayOpponents(ArrayList<Opponent> ennemies) {
+        for (Opponent enemy : ennemies) {
+            System.out.println(enemy+" next action:"+enemy.getNextActionType()+"\n");
         }
     }
 

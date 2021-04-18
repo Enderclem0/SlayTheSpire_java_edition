@@ -4,8 +4,10 @@ import main.Fight.*;
 import main.Room.Room;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class UI {
+    private final Scanner scanner = new Scanner(System.in);
     private static UI instance=null;
     private UI(){ }
     public static UI getUI() {
@@ -19,8 +21,11 @@ public class UI {
     }
     public void startRoom(Room room){
     }
-
+    public int getUserInput(){
+        return scanner.nextInt();
+    }
     public static void main(String[] args) {
+        Display display = TextDisplay.getDisplay();
         // Initialiser Player et Opponent
         PlayerAvatar p1 = new PlayerAvatar(20, 20, 20, 20);
         ArrayList<Action> possibleAction = new ArrayList<>();
@@ -36,10 +41,9 @@ public class UI {
         FightRoom fightRoom = new FightRoom(entities,potion1);
 
 
-
         // Boucle de jeu
         while (!(fightRoom.isFightOver())) {
-            // ...
+            display.displayFight(fightRoom);
         }
     }
 }
