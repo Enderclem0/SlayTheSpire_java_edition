@@ -1,5 +1,6 @@
 package main.Fight;
 
+import main.Card.Card;
 import main.Player;
 import main.UI;
 
@@ -21,9 +22,14 @@ public class FightRoom {
         playerAvatar.draw((nbTurns==0)?5:1);
 
     }
-    public int choseCard(int numberOfCard){
+    public Card choseCard(int numberOfCard){
         UI ui = UI.getUI();
-        return ui.getUserInput();
+        int chosen;
+        do {
+            chosen = ui.getUserInput("Chose a card");
+        }
+        while (chosen<0||chosen>numberOfCard);
+        return getPlayer().getCard(chosen);
     }
     public void playOpponentTurn() {
         ArrayList<Opponent> ennemies = getAllOpponents();

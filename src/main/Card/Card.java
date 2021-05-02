@@ -9,7 +9,7 @@ public class Card {
     private final Type type;
     private final String description;
 
-    Card(ArrayList<CardStrategy> strategies, int energyCost, String name, Type type, int cost, String description) {
+    public Card(ArrayList<CardStrategy> strategies, int energyCost, String name, Type type, int cost, String description) {
         this.strategies = strategies;
         this.energyCost = energyCost;
         this.name = name;
@@ -18,7 +18,7 @@ public class Card {
     }
 
 
-    boolean isUsable(int energy) {
+    public boolean isUsable(int energy) {
         return energy >= energyCost;
     }
 

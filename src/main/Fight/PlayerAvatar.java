@@ -31,8 +31,12 @@ public class PlayerAvatar extends Player implements FightEntity {
     }
     public void draw(int amount){
         int drawEmpty = hand.draw(draw,amount);
-        if(!(hand.draw(draw,amount)==0)){
-
+        if(!(drawEmpty==0)){
+            while (!discard.isEmpty()){
+                draw.push(discard.pop());
+            }
+            draw.shuffle();
+            hand.draw(draw,drawEmpty);
         }
     }
     public Hand getHand(){
@@ -52,5 +56,8 @@ public class PlayerAvatar extends Player implements FightEntity {
     }
     public boolean isDead() {
         return hp <= 0;
+    }
+    public boolean isCardPlayable(Card card){
+        return card.isUsable(currentEnergy);
     }
 }

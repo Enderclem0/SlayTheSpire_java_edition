@@ -21,7 +21,8 @@ public class UI {
     }
     public void startRoom(Room room){
     }
-    public int getUserInput(){
+    public int getUserInput(String textToDisplay){
+        System.out.println(textToDisplay);
         return scanner.nextInt();
     }
     public static void main(String[] args) {
