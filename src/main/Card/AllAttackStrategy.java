@@ -15,7 +15,9 @@ public class AllAttackStrategy implements CardStrategy {
             ennemy.takeDamage(dmg);
         }
     }
-
+    public AllAttackStrategy(int dmg){
+        this.dmg=dmg;
+    }
     @Override
     public Card.targetType getTarget() {
         return null;

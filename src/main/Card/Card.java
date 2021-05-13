@@ -37,7 +37,7 @@ public class Card {
             strategy.playStrat(object);
         }
     }
-    enum Type {
+    public enum Type {
         ATTACK, SKILL, POWER, STATUS, CURSE
     }
     @Override

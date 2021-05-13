@@ -9,7 +9,9 @@ public class SimpleAttackStrategy implements CardStrategy {
         Opponent enemy = (Opponent) obj;
         enemy.takeDamage(dmg);
     }
-
+    public SimpleAttackStrategy(int dmg){
+        this.dmg=dmg;
+    }
     @Override
     public Card.targetType getTarget() {
         return Card.targetType.ENNEMY;
