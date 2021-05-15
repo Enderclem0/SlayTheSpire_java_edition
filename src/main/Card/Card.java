@@ -42,6 +42,6 @@ public class Card {
     }
     @Override
     public String toString(){
-        return name + "cost: " + energyCost + ", Type: " + type + " " + description;
+        return name + " cost: " + energyCost + ", Type: " + type + " " + description;
     }
 }

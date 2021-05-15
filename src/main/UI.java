@@ -26,9 +26,10 @@ public class UI {
         System.out.println(textToDisplay);
         return scanner.nextInt();
     }
-    public static void main(String[] args) {
-        Display display = TextDisplay.getDisplay();
+    public static void main(String[] args) throws InterruptedException {
+
         // Initialiser Player et Opponent
+        Display display = TextDisplay.getDisplay();
         PlayerAvatar p1 = new PlayerAvatar(20, 20, 20, 20);
         ArrayList<Action> possibleAction = new ArrayList<>();
         possibleAction.add(new ActionAttack(5));
@@ -53,11 +54,11 @@ public class UI {
 
 
         // Boucle de jeu
-        while (!(fightRoom.isFightOver())) {
-
-            display.displayFight(fightRoom);
-            fightRoom.playPlayerTurn();
-            fightRoom.playOpponentTurn();
+        if (fightRoom.playRoom()){
+            display.displayWin();
+        }
+        else {
+            display.displayLose();
         }
     }
 }

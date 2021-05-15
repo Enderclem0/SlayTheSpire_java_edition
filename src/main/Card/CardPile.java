@@ -24,7 +24,7 @@ public class CardPile{
     }
 
     public Card pop() {
-        return pile.remove(-1);
+        return pile.remove(pile.size()-1);
     }
     public void shuffle(){
         Collections.shuffle(pile);

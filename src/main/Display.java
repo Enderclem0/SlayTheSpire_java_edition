@@ -1,6 +1,7 @@
 package main;
 
 import main.Card.Hand;
+import main.Fight.Action;
 import main.Fight.FightRoom;
 import main.Fight.Opponent;
 import main.Fight.PlayerAvatar;
@@ -14,4 +15,7 @@ public interface Display {
     void displayPlayer(Player player);
     void displayOpponents(ArrayList<Opponent> ennemies);
     void displayHand(Hand hand);
+    void displayAction(Opponent action);
+    void displayWin();
+    void displayLose();
 }

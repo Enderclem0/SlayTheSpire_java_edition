@@ -1,11 +1,14 @@
 package main.Fight;
 
 import main.Card.Card;
-import main.Player;
+import main.Display;
+import main.TextDisplay;
 import main.UI;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.concurrent.TimeUnit;
 
 public class FightRoom {
     private final ArrayList<FightEntity> entitiesList;
@@ -31,9 +34,12 @@ public class FightRoom {
         while (chosen<0||chosen>numberOfCard);
         return getPlayer().getCard(chosen);
     }
-    public void playOpponentTurn() {
+    public void playOpponentTurn() throws InterruptedException {
+        Display display = TextDisplay.getDisplay();
         ArrayList<Opponent> ennemies = getAllOpponents();
         for (Opponent enemy : ennemies) {
+            display.displayAction(enemy);
+            TimeUnit.SECONDS.sleep(1);
             enemy.playNextAction(getPlayer());
             enemy.randomizeNextAction();
         }
@@ -83,5 +89,14 @@ public class FightRoom {
         if (opponentDead == opponentAmount()) {
             return true;
         } else return getPlayer().isDead();
+    }
+    public boolean playRoom() throws InterruptedException {
+        Display display = TextDisplay.getDisplay();
+        while (!(isFightOver())) {
+            display.displayFight(this);
+            playPlayerTurn();
+            playOpponentTurn();
+        }
+        return !getPlayer().isDead();
     }
 }

@@ -1,6 +1,7 @@
 package main;
 
 import main.Card.Hand;
+import main.Fight.Action;
 import main.Fight.FightRoom;
 import main.Fight.Opponent;
 import main.Fight.PlayerAvatar;
@@ -54,5 +55,20 @@ public class TextDisplay implements Display {
     @Override
     public void displayHand(Hand hand) {
         System.out.println("Hand: "+hand);
+    }
+
+    @Override
+    public void displayAction(Opponent opponent) {
+        System.out.println(opponent+" utilise "+opponent.getNextActionType());
+    }
+
+    @Override
+    public void displayWin() {
+        System.out.println("Vous avez gagné");
+    }
+
+    @Override
+    public void displayLose() {
+        System.out.println("Vous avez perdu");
     }
 }
