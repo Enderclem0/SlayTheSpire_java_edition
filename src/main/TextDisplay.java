@@ -24,7 +24,6 @@ public class TextDisplay implements Display {
     public void displayFight(FightRoom fightRoom) {
         PlayerAvatar playerAvatar = fightRoom.getPlayer();
         displayPlayerAvatar(playerAvatar);
-        displayHand(playerAvatar.getHand());
         displayOpponents(fightRoom.getAllOpponents());
     }
 
@@ -37,6 +36,7 @@ public class TextDisplay implements Display {
     public void displayPlayerAvatar(PlayerAvatar playerAvatar) {
         System.out.println("Joueur 1:");
         System.out.println("Health: "+playerAvatar.hp+"/"+playerAvatar.hpMax);
+        System.out.println("Block: "+playerAvatar.getBlock()+"/"+playerAvatar.hpMax);
         System.out.println("Energy:"+playerAvatar.energyMax+"/"+playerAvatar.energyMax);
     }
 
@@ -70,5 +70,20 @@ public class TextDisplay implements Display {
     @Override
     public void displayLose() {
         System.out.println("Vous avez perdu");
+    }
+
+    @Override
+    public void displayDiscard(PlayerAvatar playerAvatar) {
+        System.out.println(playerAvatar.getDiscard());
+    }
+
+    @Override
+    public void displayDraw(PlayerAvatar playerAvatar) {
+        System.out.println(playerAvatar.getDraw());
+    }
+
+    @Override
+    public void displayText(String text) {
+        System.out.println(text);
     }
 }

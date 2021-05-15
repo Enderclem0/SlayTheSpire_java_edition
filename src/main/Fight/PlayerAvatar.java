@@ -8,7 +8,7 @@ import main.Player;
 
 public class PlayerAvatar extends Player implements FightEntity {
     private final Hand hand = new Hand();
-    private final CardPile discard = new CardPile();
+    private final CardPile discard = new CardPile("Discard");
     private final CardPile draw = this.deck;
     private final int currentEnergy;
     private int block;
@@ -39,6 +39,16 @@ public class PlayerAvatar extends Player implements FightEntity {
             hand.draw(draw,drawEmpty);
         }
     }
+    public Card getFromDraw(int position){
+        Card card = draw.draw(position);
+        draw.shuffle();
+        return card;
+    }
+    public void useEnergy(int amount){
+        if(amount<=energy) {
+            energy -= amount;
+        }
+    }
     public Hand getHand(){
         return hand;
     }
@@ -51,6 +61,9 @@ public class PlayerAvatar extends Player implements FightEntity {
     public void addBlock(int shield){
         block+=shield;
     }
+    public void resetEnergy(){
+        energy = energyMax;
+    }
     public void resetBlock(){
         block = 0;
     }
@@ -59,5 +72,15 @@ public class PlayerAvatar extends Player implements FightEntity {
     }
     public boolean isCardPlayable(Card card){
         return card.isUsable(currentEnergy);
+    }
+    public CardPile getDraw(){
+        return draw;
+    }
+    public CardPile getDiscard() {
+        return discard;
+    }
+
+    public int getBlock() {
+        return block;
     }
 }

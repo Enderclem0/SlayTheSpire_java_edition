@@ -1,12 +1,15 @@
 package main.Card;
 
+import main.Fight.FightRoom;
 import main.Fight.Opponent;
+
+import java.util.ArrayList;
 
 public class SimpleAttackStrategy implements CardStrategy {
     int dmg;
     @Override
-    public void playStrat(Object obj) {
-        Opponent enemy = (Opponent) obj;
+    public void playStrat(FightRoom fightRoom, ArrayList<Object> chosen) {
+        Opponent enemy = (Opponent) chosen.get(0);
         enemy.takeDamage(dmg);
     }
     public SimpleAttackStrategy(int dmg){

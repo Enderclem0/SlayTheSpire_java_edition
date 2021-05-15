@@ -1,5 +1,7 @@
 package main.Card;
 
+import main.Fight.FightRoom;
+
 import java.util.ArrayList;
 
 public class Card {
@@ -32,10 +34,11 @@ public class Card {
     public enum targetType {
         ENNEMY, CARD_DISCARD, CARD_HAND, CARD_DRAWPILE
     }
-    public void playCard(Object object){
+    public void playCard(FightRoom fightRoom,ArrayList<Object> target){
         for (CardStrategy strategy : strategies) {
-            strategy.playStrat(object);
+            strategy.playStrat(fightRoom,target);
         }
+        fightRoom.getPlayer().useEnergy(energyCost);
     }
     public enum Type {
         ATTACK, SKILL, POWER, STATUS, CURSE

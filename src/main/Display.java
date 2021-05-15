@@ -18,4 +18,7 @@ public interface Display {
     void displayAction(Opponent action);
     void displayWin();
     void displayLose();
+    void displayDiscard(PlayerAvatar playerAvatar);
+    void displayDraw(PlayerAvatar playerAvatar);
+    void displayText(String text);
 }

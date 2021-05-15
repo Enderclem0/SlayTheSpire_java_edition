@@ -8,9 +8,8 @@ import java.util.ArrayList;
 public class AllAttackStrategy implements CardStrategy {
     int dmg;
     @Override
-    public void playStrat(Object obj) {
-        FightRoom fight = (FightRoom) obj;
-        ArrayList<Opponent> ennemies = fight.getAllOpponents();
+    public void playStrat(FightRoom fightRoom, ArrayList<Object> chosen) {
+        ArrayList<Opponent> ennemies = fightRoom.getAllOpponents();
         for (Opponent ennemy : ennemies) {
             ennemy.takeDamage(dmg);
         }
