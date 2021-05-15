@@ -1,5 +1,4 @@
 package main;
-
 import main.Card.*;
 import main.Fight.*;
 import main.Room.Room;
@@ -51,7 +50,6 @@ public class UI {
         entities.add(p1);
         entities.add(o1);
         FightRoom fightRoom = new FightRoom(entities,potion1);
-
 
         // Boucle de jeu
         if (fightRoom.playRoom()){
