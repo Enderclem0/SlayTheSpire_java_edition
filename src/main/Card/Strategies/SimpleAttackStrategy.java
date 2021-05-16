@@ -11,7 +11,7 @@ public class SimpleAttackStrategy implements CardStrategy {
     @Override
     public void playStrat(FightRoom fightRoom, ArrayList<Object> chosen) {
         Opponent enemy = (Opponent) chosen.get(0);
-        enemy.takeDamage(dmg);
+        fightRoom.getPlayer().damage(dmg, enemy);
     }
     public SimpleAttackStrategy(int dmg){
         this.dmg=dmg;

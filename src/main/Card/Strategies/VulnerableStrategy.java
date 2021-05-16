@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class VulnerableStrategy implements CardStrategy{
     int numberOfTurn;
-    public VulnerableStrategy(int i) {
-
+    public VulnerableStrategy(int numberOfTurn) {
+        this.numberOfTurn = numberOfTurn;
     }
 
     @Override

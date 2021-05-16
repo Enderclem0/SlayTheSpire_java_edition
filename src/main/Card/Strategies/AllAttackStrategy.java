@@ -12,7 +12,7 @@ public class AllAttackStrategy implements CardStrategy {
     public void playStrat(FightRoom fightRoom, ArrayList<Object> chosen) {
         ArrayList<Opponent> ennemies = fightRoom.getAllOpponents();
         for (Opponent ennemy : ennemies) {
-            ennemy.takeDamage(dmg);
+            fightRoom.getPlayer().damage(dmg,ennemy);
         }
     }
     public AllAttackStrategy(int dmg){

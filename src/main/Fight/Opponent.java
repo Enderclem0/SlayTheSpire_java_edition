@@ -1,38 +1,33 @@
 package main.Fight;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.Random;
+import main.Fight.Pattern.Pattern;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Opponent implements FightEntity {
     private final String name;
-    private final ArrayList<Action> possibleAction;
-    private Action nextAction;
     private int hp;
     private int block = 0;
     private final HashMap<Debuff,Integer> debuff = new HashMap<>();
-    public Opponent(String name, ArrayList<Action> possibleAction, int hp){
+    private final HashMap<Buff,Integer> buff = new HashMap<>();
+    private final Pattern pattern;
+    public Opponent(String name, int hp, Pattern pattern){
         this.name = name;
-        this.possibleAction = possibleAction;
         this.hp = hp;
+        this.pattern = pattern;
         for (Debuff value : Debuff.values()) {
             debuff.put(value,0);
         }
-        randomizeNextAction();
-    }
-    public AbstractAction.ActionType getNextActionType(){
-        return nextAction.getType();
-    }
-    public void randomizeNextAction(){
-        Random random = new Random();
-        nextAction = possibleAction.get(random.nextInt(possibleAction.size()-1));
-    }
-    public void playNextAction(PlayerAvatar playerAvatar){
-        switch (nextAction.getType()){
-            case Buff, Shield -> nextAction.perform(this);
-            case Damage, Debuff -> nextAction.perform(playerAvatar);
+        for (Buff value : Buff.values()) {
+            buff.put(value,0);
         }
+    }
+    public main.Fight.Pattern.ActionType getNextActionType(FightRoom fightRoom){
+        return pattern.getNextActionType(fightRoom);
+    }
+    public void playNextAction(FightRoom fightRoom){
+        pattern.perform(fightRoom,this);
     }
     @Override
     public void takeDamage(int dmg) {
@@ -51,11 +46,25 @@ public class Opponent implements FightEntity {
         }
 
     @Override
+    public void damage(int dmg, FightEntity fightEntity) {
+        fightEntity.takeDamage(dmg+buff.get(Buff.STRENGHT));
+    }
+
+    @Override
     public boolean isDead() {
         return hp <= 0;
     }
     public void setDebuff(Debuff effect,int amount){
         debuff.replace(effect,amount);
+    }
+    public void addBuff(Buff effect,int amount){
+        buff.compute(effect,(k,v)->Objects.requireNonNull(v)+1);
+    }
+    public HashMap<Buff,Integer> getBuffs(){
+        return new HashMap<>(buff.entrySet().stream().filter(map -> map.getValue()>0).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+    }
+    public HashMap<Debuff, Integer> getDebuffs(){
+        return new HashMap<>(debuff.entrySet().stream().filter(x -> x.getValue()>0).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
     }
     public void debuffTurn(){
         for (Debuff value : Debuff.values()) {
@@ -74,4 +83,5 @@ public class Opponent implements FightEntity {
     public void resetBlock(){
         block = 0;
     }
+
 }

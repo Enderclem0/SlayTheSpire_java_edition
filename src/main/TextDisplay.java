@@ -1,12 +1,10 @@
 package main;
 
 import main.Card.Hand;
-import main.Fight.Action;
-import main.Fight.FightRoom;
-import main.Fight.Opponent;
-import main.Fight.PlayerAvatar;
+import main.Fight.*;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class TextDisplay implements Display {
     private static TextDisplay instance = null;
@@ -24,7 +22,7 @@ public class TextDisplay implements Display {
     public void displayFight(FightRoom fightRoom) {
         PlayerAvatar playerAvatar = fightRoom.getPlayer();
         displayPlayerAvatar(playerAvatar);
-        displayOpponents(fightRoom.getAllOpponents());
+        displayOpponents(fightRoom.getAllOpponents(),fightRoom);
     }
 
     @Override
@@ -35,9 +33,10 @@ public class TextDisplay implements Display {
     @Override
     public void displayPlayerAvatar(PlayerAvatar playerAvatar) {
         System.out.println("Joueur 1:");
-        System.out.println("Health: "+playerAvatar.hp+"/"+playerAvatar.hpMax);
-        System.out.println("Block: "+playerAvatar.getBlock()+"/"+playerAvatar.hpMax);
-        System.out.println("Energy:"+playerAvatar.energyMax+"/"+playerAvatar.energyMax);
+        System.out.println("Health: "+playerAvatar.getHp()+"/"+playerAvatar.getHpMax());
+        System.out.println("Block: "+playerAvatar.getBlock());
+        System.out.println("Energy:"+playerAvatar.getEnergy()+"/"+playerAvatar.getEnergyMax());
+        displayPlayerBuff(playerAvatar);
     }
 
     @Override
@@ -46,10 +45,43 @@ public class TextDisplay implements Display {
     }
 
     @Override
-    public void displayOpponents(ArrayList<Opponent> ennemies) {
+    public void displayOpponents(ArrayList<Opponent> ennemies,FightRoom fightRoom) {
         for (Opponent enemy : ennemies) {
-            System.out.println(enemy+" next action:"+enemy.getNextActionType()+"\n");
+            System.out.println(enemy+" next action:"+enemy.getNextActionType(fightRoom)+"\n");
+            displayOpponentBuff(enemy);
         }
+    }
+
+    @Override
+    public void displayOpponentBuff(Opponent opponent) {
+        StringBuilder ret = new StringBuilder();
+        ret.append("Buffs:\n");
+        for (Map.Entry<Buff, Integer> buffIntegerEntry : opponent.getBuffs().entrySet()) {
+            ret.append(buffIntegerEntry.getKey()).append(":").append(buffIntegerEntry.getValue()).append("\n");
+        }
+        System.out.println(ret);
+        ret = new StringBuilder();
+        ret.append("Debuff:\n");
+        for (Map.Entry<Debuff, Integer> debuffIntegerEntry : opponent.getDebuffs().entrySet()) {
+            ret.append(debuffIntegerEntry.getKey()).append(":").append(debuffIntegerEntry.getValue()).append("\n");
+        }
+        System.out.println(ret);
+    }
+
+    @Override
+    public void displayPlayerBuff(PlayerAvatar playerAvatar) {
+        StringBuilder ret = new StringBuilder();
+        ret.append("Buffs:\n");
+        for (Map.Entry<Buff, Integer> buffIntegerEntry : playerAvatar.getBuffs().entrySet()) {
+            ret.append(buffIntegerEntry.getKey()).append(":").append(buffIntegerEntry.getValue()).append("\n");
+        }
+        System.out.println(ret);
+        ret = new StringBuilder();
+        ret.append("Debuffs:\n");
+        for (Map.Entry<Debuff, Integer> debuffIntegerEntry : playerAvatar.getDebuffs().entrySet()) {
+            ret.append(debuffIntegerEntry.getKey()).append(":").append(debuffIntegerEntry.getValue()).append("\n");
+        }
+        System.out.println(ret);
     }
 
     @Override
@@ -58,8 +90,8 @@ public class TextDisplay implements Display {
     }
 
     @Override
-    public void displayAction(Opponent opponent) {
-        System.out.println(opponent+" utilise "+opponent.getNextActionType());
+    public void displayAction(Opponent opponent,FightRoom fightRoom) {
+        System.out.println(opponent+" utilise "+opponent.getNextActionType(fightRoom));
     }
 
     @Override

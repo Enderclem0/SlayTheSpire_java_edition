@@ -2,6 +2,7 @@ package main.Fight;
 
 import main.Card.Card;
 import main.Display;
+import main.Fight.Pattern.ActionType;
 import main.TextDisplay;
 import main.UI;
 
@@ -83,6 +84,7 @@ public class FightRoom {
         UI ui = UI.getUI();
         Display display = TextDisplay.getDisplay();
         PlayerAvatar playerAvatar = getPlayer();
+        playerAvatar.resetEnergy();
         playerAvatar.draw(5);
         boolean skip = false;
         while (!skip) {
@@ -92,6 +94,7 @@ public class FightRoom {
                 Card card = playerAvatar.getCard(chosen-1);
                 if(playerAvatar.isCardPlayable(card)){
                     playCard(card);
+                    playerAvatar.getHand().removeCard(card);
                     display.displayFight(this);
                 }
                 else {
@@ -117,10 +120,9 @@ public class FightRoom {
         Display display = TextDisplay.getDisplay();
         ArrayList<Opponent> ennemies = getAllOpponents();
         for (Opponent enemy : ennemies) {
-            display.displayAction(enemy);
+            display.displayAction(enemy,this);
             TimeUnit.SECONDS.sleep(1);
-            enemy.playNextAction(getPlayer());
-            enemy.randomizeNextAction();
+            enemy.playNextAction(this);
         }
         nbTurns++;
     }
@@ -152,8 +154,8 @@ public class FightRoom {
         return (Opponent) entitiesList.get(position);
     }
 
-    public AbstractAction.ActionType getOpponentMove(int position) {
-        return getOpponent(position).getNextActionType();
+    public ActionType getOpponentMove(int position) {
+        return getOpponent(position).getNextActionType(this);
     }
 
     public void makeOpponentDie(int position) {
@@ -195,5 +197,10 @@ public class FightRoom {
         for (Opponent allOpponent : getAllOpponents()) {
             allOpponent.debuffTurn();
         }
+        nbTurns++;
+    }
+
+    public int getTurn() {
+        return nbTurns;
     }
 }

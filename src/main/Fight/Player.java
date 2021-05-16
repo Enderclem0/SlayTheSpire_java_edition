@@ -1,4 +1,4 @@
-package main;
+package main.Fight;
 
 import main.Card.Card;
 import main.Card.CardPile;
@@ -19,6 +19,21 @@ public class Player {
         this.hpMax = hpMax;
         this.energyMax = energyMax;
     }
+    public int getHp() {
+        return hp;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public int getHpMax() {
+        return hpMax;
+    }
+
+    public int getEnergyMax() {
+        return energyMax;
+    }
     public void damageHp(int dmg){
         hp-=dmg;
     }
@@ -37,7 +52,6 @@ public class Player {
             AddCard(card);
         }
     }
-
     public void progress(){
         currentStage++;
     }

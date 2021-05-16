@@ -1,10 +1,7 @@
 package main;
 
 import main.Card.Hand;
-import main.Fight.Action;
-import main.Fight.FightRoom;
-import main.Fight.Opponent;
-import main.Fight.PlayerAvatar;
+import main.Fight.*;
 
 import java.util.ArrayList;
 
@@ -13,9 +10,11 @@ public interface Display {
     void displayUI();
     void displayPlayerAvatar(PlayerAvatar playerAvatar);
     void displayPlayer(Player player);
-    void displayOpponents(ArrayList<Opponent> ennemies);
+    void displayOpponents(ArrayList<Opponent> ennemies,FightRoom fightRoom);
+    void displayOpponentBuff(Opponent opponent);
+    void displayPlayerBuff(PlayerAvatar playerAvatar);
     void displayHand(Hand hand);
-    void displayAction(Opponent action);
+    void displayAction(Opponent action,FightRoom fightRoom);
     void displayWin();
     void displayLose();
     void displayDiscard(PlayerAvatar playerAvatar);

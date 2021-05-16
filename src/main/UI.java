@@ -2,13 +2,15 @@ package main;
 import main.Card.*;
 import main.Card.Strategies.*;
 import main.Fight.*;
+import main.Fight.Pattern.CultistPattern;
+import main.Fight.Pattern.Pattern;
 import main.Room.Room;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class UI {
-    private final Scanner scanner = new Scanner(System.in);
     private static UI instance=null;
     private UI(){ }
     public static UI getUI() {
@@ -23,8 +25,9 @@ public class UI {
     public void startRoom(Room room){
     }
     public int getUserInput(String textToDisplay){
-        System.out.println(textToDisplay);
-        return scanner.nextInt();
+            Scanner scanner = new Scanner(System.in);
+            System.out.println(textToDisplay);
+            return scanner.nextInt();
     }
     public static void main(String[] args) throws InterruptedException {
         Display display = TextDisplay.getDisplay();
@@ -38,15 +41,19 @@ public class UI {
         Card defend = new Card(strat2,1,"Defend", Card.Type.SKILL,"Gain 5 Block");
         ArrayList<CardStrategy> strat3 = new ArrayList<>();
         strat3.add(new SimpleAttackStrategy(8));
-        Card bash = new Card(strat3,2,"Bash", Card.Type.ATTACK,"Deal 8 damage.\n Apply vulnerable 2");
-        strat3.add(new VulnerableStrategy(5));
+        strat3.add(new VulnerableStrategy(2));
+        Card bash = new Card(strat3,2,"Bash", Card.Type.ATTACK,"Deal 8 damage, apply vulnerable 2");
         p1.AddCard(strike,5);
         p1.AddCard(defend,4);
         p1.AddCard(bash);
-
+        //Initialisation monstres
+        Pattern cultPat = new CultistPattern();
+        Random random = new Random();
+        Opponent cultist = new Opponent("Cultist",47+random.nextInt(6),cultPat);
         // Initialisation de la fight room
-        ArrayList<FightEntity> entities = new ArrayList<>();
-        FightRoom fightRoom = new FightRoom(p1,entities);
+        ArrayList<FightEntity> ennemies = new ArrayList<>();
+        ennemies.add(cultist);
+        FightRoom fightRoom = new FightRoom(p1,ennemies);
 
         // Boucle de jeu
         if (fightRoom.playRoom()){
