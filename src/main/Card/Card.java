@@ -1,5 +1,6 @@
 package main.Card;
 
+import main.Card.Strategies.CardStrategy;
 import main.Fight.FightRoom;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class Card {
     private final Type type;
     private final String description;
 
-    public Card(ArrayList<CardStrategy> strategies, int energyCost, String name, Type type, int cost, String description) {
+    public Card(ArrayList<CardStrategy> strategies, int energyCost, String name, Type type, String description) {
         this.strategies = strategies;
         this.energyCost = energyCost;
         this.name = name;

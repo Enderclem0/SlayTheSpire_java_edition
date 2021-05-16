@@ -22,6 +22,9 @@ public class Hand {
     public Card getCard(int pos){
         return cards.get(pos);
     }
+    public Card pop(){
+        return cards.remove(cards.size()-1);
+    }
     @Override
     public String toString(){
         StringBuilder ret = new StringBuilder();

@@ -5,18 +5,26 @@ import main.Card.CardPile;
 import main.Card.Hand;
 import main.Player;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 
 public class PlayerAvatar extends Player implements FightEntity {
     private final Hand hand = new Hand();
     private final CardPile discard = new CardPile("Discard");
     private final CardPile draw = this.deck;
     private final int currentEnergy;
+    private final HashMap<Debuff,Integer> debuff = new HashMap<>();
     private int block;
 
     public PlayerAvatar(int hp, int energy, int hpMax, int energyMax) {
         super(hp, energy, hpMax, energyMax);
         this.currentEnergy = energyMax;
         this.block=0;
+        for (Debuff value : Debuff.values()) {
+            debuff.put(value,0);
+        }
     }
     @Override
     public void takeDamage(int dmg) {
@@ -70,6 +78,11 @@ public class PlayerAvatar extends Player implements FightEntity {
     public boolean isDead() {
         return hp <= 0;
     }
+    public void discardHand(){
+        while(hand.getSize()>0){
+            discard.push(hand.pop());
+        }
+    }
     public boolean isCardPlayable(Card card){
         return card.isUsable(currentEnergy);
     }
@@ -79,7 +92,15 @@ public class PlayerAvatar extends Player implements FightEntity {
     public CardPile getDiscard() {
         return discard;
     }
+    public void setDebuff(Debuff effect,int amount){
+        debuff.replace(effect,amount);
+    }
+    public void debuffTurn(){
+        for (Debuff value : Debuff.values()) {
+            debuff.compute(value,(k,v)->(Objects.requireNonNull(v)>0)?v-1:v);
+        }
 
+    }
     public int getBlock() {
         return block;
     }

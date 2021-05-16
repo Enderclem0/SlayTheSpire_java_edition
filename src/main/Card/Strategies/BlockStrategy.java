@@ -1,11 +1,12 @@
-package main.Card;
+package main.Card.Strategies;
 
+import main.Card.Card;
 import main.Fight.FightRoom;
 import main.Fight.PlayerAvatar;
 
 import java.util.ArrayList;
 
-public class BlockStrategy implements CardStrategy{
+public class BlockStrategy implements CardStrategy {
     private int block;
     @Override
     public void playStrat(FightRoom fightRoom, ArrayList<Object> chosen) {

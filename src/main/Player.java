@@ -32,6 +32,12 @@ public class Player {
         Objects.requireNonNull(card);
         deck.push(card);
     }
+    public void AddCard(Card card,int amount){
+        for (int i = 0; i < amount; i++) {
+            AddCard(card);
+        }
+    }
+
     public void progress(){
         currentStage++;
     }

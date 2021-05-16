@@ -11,13 +11,13 @@ import java.util.concurrent.TimeUnit;
 
 public class FightRoom {
     private final ArrayList<FightEntity> entitiesList;
-    private Potion potion;
     private int nbTurns = 0;
-
-    public FightRoom(ArrayList<FightEntity> entities, Potion potion) {
-        Objects.requireNonNull(entities);
+    public FightRoom(PlayerAvatar playerAvatar,ArrayList<FightEntity> ennemies) {
+        Objects.requireNonNull(ennemies);
+        ArrayList<FightEntity> entities = new ArrayList<>();
+        entities.add(playerAvatar);
+        entities.addAll(ennemies);
         this.entitiesList = entities;
-        this.potion = potion;
     }
 
     private Object getTarget(Card.targetType target) {
@@ -83,7 +83,7 @@ public class FightRoom {
         UI ui = UI.getUI();
         Display display = TextDisplay.getDisplay();
         PlayerAvatar playerAvatar = getPlayer();
-        playerAvatar.draw((nbTurns == 0) ? 5 : 1);
+        playerAvatar.draw(5);
         boolean skip = false;
         while (!skip) {
             display.displayHand(playerAvatar.getHand());
@@ -182,7 +182,18 @@ public class FightRoom {
                 break;
             }
             playOpponentTurn();
+            endOfTurn();
         }
         return !getPlayer().isDead();
+    }
+
+    private void endOfTurn() {
+        PlayerAvatar playerAvatar = getPlayer();
+        playerAvatar.resetBlock();
+        playerAvatar.debuffTurn();
+        playerAvatar.discardHand();
+        for (Opponent allOpponent : getAllOpponents()) {
+            allOpponent.debuffTurn();
+        }
     }
 }

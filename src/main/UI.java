@@ -1,5 +1,6 @@
 package main;
 import main.Card.*;
+import main.Card.Strategies.*;
 import main.Fight.*;
 import main.Room.Room;
 
@@ -26,30 +27,26 @@ public class UI {
         return scanner.nextInt();
     }
     public static void main(String[] args) throws InterruptedException {
-
-        // Initialiser Player et Opponent
         Display display = TextDisplay.getDisplay();
-        PlayerAvatar p1 = new PlayerAvatar(20, 20, 20, 20);
-        ArrayList<Action> possibleAction = new ArrayList<>();
-        possibleAction.add(new ActionAttack(5));
-        possibleAction.add(new ActionBlock(5));
+        // Initialisation personnage
+        PlayerAvatar p1 = new PlayerAvatar(80, 3, 80, 3);
         ArrayList<CardStrategy> strat = new ArrayList<>();
-        strat.add(new AllAttackStrategy(6));
-        Card allAttack = new Card(strat,3,"AllAttack", Card.Type.ATTACK,25,"Attack all ennemies.");
+        strat.add(new SimpleAttackStrategy(6));
+        Card strike = new Card(strat,1,"Strike", Card.Type.ATTACK,"Deal 6 damage");
         ArrayList<CardStrategy> strat2 = new ArrayList<>();
-        strat2.add(new BlockStrategy(3));
-        strat2.add(new SimpleAttackStrategy(3));
-        Card blockAttack = new Card(strat2,2,"BlockAttack", Card.Type.ATTACK,10,"Block then attack for 3");
-        p1.AddCard(blockAttack);
-        p1.AddCard(allAttack);
-        Opponent o1 = new Opponent("Dwarf", possibleAction, 12);
-        Potion potion1 = new Potion("Elixir", Potion.Rarity.COMMON, "Heal 10hp");
+        strat2.add(new BlockStrategy(5));
+        Card defend = new Card(strat2,1,"Defend", Card.Type.SKILL,"Gain 5 Block");
+        ArrayList<CardStrategy> strat3 = new ArrayList<>();
+        strat3.add(new SimpleAttackStrategy(8));
+        Card bash = new Card(strat3,2,"Bash", Card.Type.ATTACK,"Deal 8 damage.\n Apply vulnerable 2");
+        strat3.add(new VulnerableStrategy(5));
+        p1.AddCard(strike,5);
+        p1.AddCard(defend,4);
+        p1.AddCard(bash);
 
         // Initialisation de la fight room
         ArrayList<FightEntity> entities = new ArrayList<>();
-        entities.add(p1);
-        entities.add(o1);
-        FightRoom fightRoom = new FightRoom(entities,potion1);
+        FightRoom fightRoom = new FightRoom(p1,entities);
 
         // Boucle de jeu
         if (fightRoom.playRoom()){

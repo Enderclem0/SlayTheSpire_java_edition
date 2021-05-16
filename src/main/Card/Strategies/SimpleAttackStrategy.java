@@ -1,5 +1,6 @@
-package main.Card;
+package main.Card.Strategies;
 
+import main.Card.Card;
 import main.Fight.FightRoom;
 import main.Fight.Opponent;
 
