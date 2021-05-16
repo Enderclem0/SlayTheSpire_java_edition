@@ -13,7 +13,8 @@ import java.util.concurrent.TimeUnit;
 public class FightRoom {
     private final ArrayList<FightEntity> entitiesList;
     private int nbTurns = 0;
-    public FightRoom(PlayerAvatar playerAvatar,ArrayList<FightEntity> ennemies) {
+
+    public FightRoom(PlayerAvatar playerAvatar, ArrayList<FightEntity> ennemies) {
         Objects.requireNonNull(ennemies);
         ArrayList<FightEntity> entities = new ArrayList<>();
         entities.add(playerAvatar);
@@ -73,7 +74,7 @@ public class FightRoom {
         ArrayList<Card.targetType> targets = card.getTargets();
         ArrayList<Object> chosenTarget = new ArrayList<>();
         for (Card.targetType target : targets) {
-            if(target!=null){
+            if (target != null) {
                 chosenTarget.add(getTarget(target));
             }
         }
@@ -91,13 +92,12 @@ public class FightRoom {
             display.displayHand(playerAvatar.getHand());
             int chosen = ui.getUserInput("Chose a card number or -1 to skip ");
             if (chosen > 0 && chosen <= playerAvatar.getHand().getSize()) {
-                Card card = playerAvatar.getCard(chosen-1);
-                if(playerAvatar.isCardPlayable(card)){
+                Card card = playerAvatar.getCard(chosen - 1);
+                if (playerAvatar.isCardPlayable(card)) {
                     playCard(card);
                     playerAvatar.getHand().removeCard(card);
                     display.displayFight(this);
-                }
-                else {
+                } else {
                     display.displayText("Card not playable");
                 }
             } else {
@@ -120,7 +120,7 @@ public class FightRoom {
         Display display = TextDisplay.getDisplay();
         ArrayList<Opponent> ennemies = getAllOpponents();
         for (Opponent enemy : ennemies) {
-            display.displayAction(enemy,this);
+            display.displayAction(enemy, this);
             TimeUnit.SECONDS.sleep(1);
             enemy.playNextAction(this);
         }
@@ -149,7 +149,7 @@ public class FightRoom {
 
     public Opponent getOpponent(int position) {
         if (position > entitiesList.size() - 1 || position <= 0) {
-            throw new IllegalArgumentException("Position must be above 0 and below the number of entities here:"+position);
+            throw new IllegalArgumentException("Position must be above 0 and below the number of entities here:" + position);
         }
         return (Opponent) entitiesList.get(position);
     }
@@ -180,7 +180,7 @@ public class FightRoom {
         while (!(isFightOver())) {
             display.displayFight(this);
             playPlayerTurn();
-            if(isFightOver()){
+            if (isFightOver()) {
                 break;
             }
             playOpponentTurn();

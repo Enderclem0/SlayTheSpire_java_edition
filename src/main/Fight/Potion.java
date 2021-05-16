@@ -3,13 +3,9 @@ package main.Fight;
 import java.util.Objects;
 
 public class Potion {
-    private String name;
-    public enum Rarity {
-        COMMON, UNCOMMON
-    }
     Rarity rarity;
-    private String effect;
-
+    private final String name;
+    private final String effect;
     public Potion(String name, Rarity rarity, String effect) {
         Objects.requireNonNull(name);
         Objects.requireNonNull(rarity);
@@ -17,5 +13,9 @@ public class Potion {
         this.name = name;
         this.rarity = rarity;
         this.effect = effect;
+    }
+
+    public enum Rarity {
+        COMMON, UNCOMMON
     }
 }

@@ -7,16 +7,12 @@ import main.Fight.Opponent;
 
 import java.util.ArrayList;
 
-public class VulnerableStrategy implements CardStrategy{
-    int numberOfTurn;
-    public VulnerableStrategy(int numberOfTurn) {
-        this.numberOfTurn = numberOfTurn;
-    }
+public record VulnerableStrategy(int numberOfTurn) implements CardStrategy {
 
     @Override
     public void playStrat(FightRoom fightRoom, ArrayList<Object> chosen) {
         Opponent opponent = (Opponent) chosen.get(0);
-        opponent.setDebuff(Debuff.VULNERABLE,numberOfTurn);
+        opponent.setDebuff(Debuff.VULNERABLE, numberOfTurn);
     }
 
     @Override

@@ -2,5 +2,6 @@ package main;
 
 public class GameMap {
 
-    public GameMap(){}
+    public GameMap() {
+    }
 }

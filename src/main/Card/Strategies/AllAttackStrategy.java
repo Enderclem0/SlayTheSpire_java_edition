@@ -6,18 +6,16 @@ import main.Fight.Opponent;
 
 import java.util.ArrayList;
 
-public class AllAttackStrategy implements CardStrategy {
-    int dmg;
+public record AllAttackStrategy(int dmg) implements CardStrategy {
+
     @Override
     public void playStrat(FightRoom fightRoom, ArrayList<Object> chosen) {
         ArrayList<Opponent> ennemies = fightRoom.getAllOpponents();
-        for (Opponent ennemy : ennemies) {
-            fightRoom.getPlayer().damage(dmg,ennemy);
+        for (Opponent enemy : ennemies) {
+            fightRoom.getPlayer().damage(dmg, enemy);
         }
     }
-    public AllAttackStrategy(int dmg){
-        this.dmg=dmg;
-    }
+
     @Override
     public Card.targetType getTarget() {
         return null;

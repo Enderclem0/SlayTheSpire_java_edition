@@ -5,47 +5,39 @@ import main.Fight.FightRoom;
 
 import java.util.ArrayList;
 
-public class Card {
-    private final ArrayList<CardStrategy> strategies;
-    private final int energyCost;
-    private final String name;
-    private final Type type;
-    private final String description;
-
-    public Card(ArrayList<CardStrategy> strategies, int energyCost, String name, Type type, String description) {
-        this.strategies = strategies;
-        this.energyCost = energyCost;
-        this.name = name;
-        this.type = type;
-        this.description = description;
-    }
+public record Card(ArrayList<CardStrategy> strategies, int energyCost,
+                   String name, main.Card.Card.Type type, String description) {
 
 
     public boolean isUsable(int energy) {
         return energy >= energyCost;
     }
 
-    public ArrayList<targetType> getTargets(){
+    public ArrayList<targetType> getTargets() {
         ArrayList<targetType> targetList = new ArrayList<>();
         for (CardStrategy strategy : strategies) {
             targetList.add(strategy.getTarget());
         }
         return targetList;
     }
-    public enum targetType {
-        ENNEMY, CARD_DISCARD, CARD_HAND, CARD_DRAWPILE
-    }
-    public void playCard(FightRoom fightRoom,ArrayList<Object> target){
+
+    public void playCard(FightRoom fightRoom, ArrayList<Object> target) {
         for (CardStrategy strategy : strategies) {
-            strategy.playStrat(fightRoom,target);
+            strategy.playStrat(fightRoom, target);
         }
         fightRoom.getPlayer().useEnergy(energyCost);
     }
+
+    @Override
+    public String toString() {
+        return name + " cost: " + energyCost + ", Type: " + type + " " + description;
+    }
+
+    public enum targetType {
+        ENNEMY, CARD_DISCARD, CARD_HAND, CARD_DRAWPILE
+    }
+
     public enum Type {
         ATTACK, SKILL, POWER, STATUS, CURSE
-    }
-    @Override
-    public String toString(){
-        return name + " cost: " + energyCost + ", Type: " + type + " " + description;
     }
 }

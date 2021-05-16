@@ -8,11 +8,12 @@ import java.util.Map;
 
 public class TextDisplay implements Display {
     private static TextDisplay instance = null;
-    private TextDisplay(){
+
+    private TextDisplay() {
     }
 
     public static TextDisplay getDisplay() {
-        if (instance==null){
+        if (instance == null) {
             instance = new TextDisplay();
         }
         return instance;
@@ -22,7 +23,7 @@ public class TextDisplay implements Display {
     public void displayFight(FightRoom fightRoom) {
         PlayerAvatar playerAvatar = fightRoom.getPlayer();
         displayPlayerAvatar(playerAvatar);
-        displayOpponents(fightRoom.getAllOpponents(),fightRoom);
+        displayOpponents(fightRoom.getAllOpponents(), fightRoom);
     }
 
     @Override
@@ -33,9 +34,9 @@ public class TextDisplay implements Display {
     @Override
     public void displayPlayerAvatar(PlayerAvatar playerAvatar) {
         System.out.println("Joueur 1:");
-        System.out.println("Health: "+playerAvatar.getHp()+"/"+playerAvatar.getHpMax());
-        System.out.println("Block: "+playerAvatar.getBlock());
-        System.out.println("Energy:"+playerAvatar.getEnergy()+"/"+playerAvatar.getEnergyMax());
+        System.out.println("Health: " + playerAvatar.getHp() + "/" + playerAvatar.getHpMax());
+        System.out.println("Block: " + playerAvatar.getBlock());
+        System.out.println("Energy:" + playerAvatar.getEnergy() + "/" + playerAvatar.getEnergyMax());
         displayPlayerBuff(playerAvatar);
     }
 
@@ -45,9 +46,9 @@ public class TextDisplay implements Display {
     }
 
     @Override
-    public void displayOpponents(ArrayList<Opponent> ennemies,FightRoom fightRoom) {
+    public void displayOpponents(ArrayList<Opponent> ennemies, FightRoom fightRoom) {
         for (Opponent enemy : ennemies) {
-            System.out.println(enemy+" next action:"+enemy.getNextActionType(fightRoom)+"\n");
+            System.out.println(enemy + " next action:" + enemy.getNextActionType(fightRoom) + "\n");
             displayOpponentBuff(enemy);
         }
     }
@@ -86,12 +87,12 @@ public class TextDisplay implements Display {
 
     @Override
     public void displayHand(Hand hand) {
-        System.out.println("Hand: "+hand);
+        System.out.println("Hand: " + hand);
     }
 
     @Override
-    public void displayAction(Opponent opponent,FightRoom fightRoom) {
-        System.out.println(opponent+" utilise "+opponent.getNextActionType(fightRoom));
+    public void displayAction(Opponent opponent, FightRoom fightRoom) {
+        System.out.println(opponent + " utilise " + opponent.getNextActionType(fightRoom));
     }
 
     @Override
