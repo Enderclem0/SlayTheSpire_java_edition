@@ -35,7 +35,7 @@ public class UI {
 
     public static void main(String[] args) throws InterruptedException {
         Display display = TextDisplay.getDisplay();
-        // Initialisation personnage
+        // Initialisation personnage et cartes
         PlayerAvatar p1 = new PlayerAvatar(80, 3, 80, 3);
         ArrayList<CardStrategy> strat = new ArrayList<>();
         strat.add(new SimpleAttackStrategy(6));

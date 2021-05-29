@@ -14,6 +14,14 @@ public class Hand {
         }
         return 0;
     }
+    public void addCard(Card card) {
+        if (cards.size()<10) {
+            cards.add(card);
+        }
+        else {
+            System.out.println("Too much Cards, maximum is 10");
+        }
+    }
 
     public void removeCard(Card card) {
         cards.remove(card);
