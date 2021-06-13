@@ -1,6 +1,7 @@
 package main;
 
 
+import main.Fight.PlayerAvatar;
 import main.Room.RoomBuilder;
 
 public class Mapbuilder {
@@ -15,10 +16,13 @@ public class Mapbuilder {
         return instance;
     }
 
-    public GameMap createMap() {
+    public GameMap createMap(PlayerAvatar playerAvatar) {
         RoomBuilder roomBuilder = RoomBuilder.getRoomBuilder();
         GameMap game = new GameMap();
-
+        game.addRoom(roomBuilder.createRoom(RoomBuilder.roomType.FIGHT, playerAvatar));
+        game.addRoom(roomBuilder.createRoom(RoomBuilder.roomType.FIGHT, playerAvatar));
+        game.addRoom(roomBuilder.createRoom(RoomBuilder.roomType.FIGHT, playerAvatar));
+        game.addRoom(roomBuilder.createRoom(RoomBuilder.roomType.FIGHT, playerAvatar));
         return game;
     }
 
