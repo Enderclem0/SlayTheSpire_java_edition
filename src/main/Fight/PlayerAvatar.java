@@ -48,7 +48,10 @@ public class PlayerAvatar extends Player implements FightEntity {
 
     @Override
     public void damage(int dmg, FightEntity fightEntity) {
-        fightEntity.takeDamage(dmg + buff.get(Buff.STRENGHT));
+        fightEntity.takeDamage((int) (Math.ceil(dmg + buff.get(Buff.STRENGHT))/(0.25*(debuff.get(Debuff.WEAK)>0?1:0))));
+    }
+    public void damage(int dmg, FightEntity fightEntity,int multiplier) {
+        fightEntity.takeDamage((int) (Math.ceil(dmg + buff.get(Buff.STRENGHT)*3)/(0.25*(debuff.get(Debuff.WEAK)>0?1:0))));
     }
 
     public void draw(int amount) {
@@ -73,6 +76,9 @@ public class PlayerAvatar extends Player implements FightEntity {
             energy -= amount;
         }
     }
+    public void addEnergy(int amount) {
+        energy+=amount;
+    }
 
     public HashMap<Buff, Integer> getBuffs() {
         return new HashMap<>(buff.entrySet().stream().filter(map -> map.getValue() > 0).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
@@ -90,10 +96,6 @@ public class PlayerAvatar extends Player implements FightEntity {
         return hand.getCard(num);
     }
 
-    public int getNumberOfCard() {
-        return hand.getSize();
-    }
-
     public void addBlock(int shield) {
         block += shield;
     }
@@ -108,6 +110,9 @@ public class PlayerAvatar extends Player implements FightEntity {
 
     public boolean isDead() {
         return hp <= 0;
+    }
+    public void loseHp(int amount){
+        damageHp(amount);
     }
 
     public void discardHand() {

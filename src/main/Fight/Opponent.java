@@ -53,7 +53,7 @@ public class Opponent implements FightEntity {
 
     @Override
     public void damage(int dmg, FightEntity fightEntity) {
-        fightEntity.takeDamage(dmg + buff.get(Buff.STRENGHT));
+        fightEntity.takeDamage((int) (Math.ceil(dmg + buff.get(Buff.STRENGHT))/(0.25*(debuff.get(Debuff.WEAK)>0?1:0))));
     }
 
     @Override

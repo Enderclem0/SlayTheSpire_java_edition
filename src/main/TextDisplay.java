@@ -1,5 +1,6 @@
 package main;
 
+import main.Card.Card;
 import main.Card.Hand;
 import main.Fight.*;
 
@@ -24,6 +25,11 @@ public class TextDisplay implements Display {
         PlayerAvatar playerAvatar = fightRoom.getPlayer();
         displayPlayerAvatar(playerAvatar);
         displayOpponents(fightRoom.getAllOpponents(), fightRoom);
+    }
+
+    @Override
+    public void displayCard(Card card) {
+        System.out.println(card);
     }
 
     @Override

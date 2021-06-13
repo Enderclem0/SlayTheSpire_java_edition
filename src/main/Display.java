@@ -1,5 +1,6 @@
 package main;
 
+import main.Card.Card;
 import main.Card.Hand;
 import main.Fight.FightRoom;
 import main.Fight.Opponent;
@@ -10,6 +11,8 @@ import java.util.ArrayList;
 
 public interface Display {
     void displayFight(FightRoom fightRoom);
+
+    void displayCard(Card card);
 
     void displayUI();
 

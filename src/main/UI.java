@@ -1,6 +1,7 @@
 package main;
 
 import main.Card.Card;
+import main.Card.CardBuilder;
 import main.Card.Strategies.BlockStrategy;
 import main.Card.Strategies.CardStrategy;
 import main.Card.Strategies.SimpleAttackStrategy;
@@ -29,7 +30,6 @@ public class UI {
         }
         return instance;
     }
-
     private static void gameOver() {
     }
 
@@ -37,19 +37,11 @@ public class UI {
         Display display = TextDisplay.getDisplay();
         // Initialisation personnage et cartes
         PlayerAvatar p1 = new PlayerAvatar(80, 3, 80, 3);
-        ArrayList<CardStrategy> strat = new ArrayList<>();
-        strat.add(new SimpleAttackStrategy(6));
-        Card strike = new Card(strat, 1, "Strike", Card.Type.ATTACK, "Deal 6 damage");
-        ArrayList<CardStrategy> strat2 = new ArrayList<>();
-        strat2.add(new BlockStrategy(5));
-        Card defend = new Card(strat2, 1, "Defend", Card.Type.SKILL, "Gain 5 Block");
-        ArrayList<CardStrategy> strat3 = new ArrayList<>();
-        strat3.add(new SimpleAttackStrategy(8));
-        strat3.add(new VulnerableStrategy(2));
-        Card bash = new Card(strat3, 2, "Bash", Card.Type.ATTACK, "Deal 8 damage, apply vulnerable 2");
-        p1.AddCard(strike, 5);
-        p1.AddCard(defend, 4);
-        p1.AddCard(bash);
+        CardBuilder cardBuilder = CardBuilder.getCardBuilder();
+        cardBuilder.initCard();
+        p1.AddCard(cardBuilder.getCard("Strike"), 5);
+        p1.AddCard(cardBuilder.getCard("Defend"), 4);
+        p1.AddCard(cardBuilder.getCard("Bash"));
         //Initialisation monstres
         Pattern cultPat = new CultistPattern();
         Random random = new Random();

@@ -1,5 +1,5 @@
 package main.Fight;
 
 public enum Debuff {
-    VULNERABLE
+    VULNERABLE,WEAK
 }
