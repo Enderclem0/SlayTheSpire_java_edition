@@ -30,6 +30,15 @@ public class PlayerAvatar extends Player implements FightEntity {
         }
     }
 
+    public PlayerAvatar(PlayerAvatar p1) {
+        super(p1.hp, p1.energyMax, p1.hpMax, p1.energyMax);
+        this.block = 0;
+    }
+
+    public PlayerAvatar(Player player){
+        super(player.hp, player.energyMax,player.hpMax, player.energyMax);
+    }
+
     @Override
     public void takeDamage(int dmg) {
         int rest;

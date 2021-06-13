@@ -15,10 +15,10 @@ public class FightRoom implements Room {
     private final ArrayList<FightEntity> entitiesList;
     private int nbTurns = 0;
 
-    public FightRoom(PlayerAvatar playerAvatar, ArrayList<FightEntity> ennemies) {
+    public FightRoom(ArrayList<FightEntity> ennemies) {
         Objects.requireNonNull(ennemies);
         ArrayList<FightEntity> entities = new ArrayList<>();
-        entities.add(playerAvatar);
+        entities.add(null);
         entities.addAll(ennemies);
         this.entitiesList = entities;
     }
@@ -176,7 +176,8 @@ public class FightRoom implements Room {
         } else return getPlayer().isDead();
     }
 
-    public boolean playRoom() throws InterruptedException {
+    public boolean playRoom(Player player) throws InterruptedException {
+        entitiesList.set(0,new PlayerAvatar(player));
         Display display = TextDisplay.getDisplay();
         while (!(isFightOver())) {
             display.displayFight(this);

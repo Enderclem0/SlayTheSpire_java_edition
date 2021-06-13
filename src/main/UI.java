@@ -1,6 +1,7 @@
 package main;
 
 import main.Card.CardBuilder;
+import main.Fight.Player;
 import main.Fight.PlayerAvatar;
 
 import java.util.Scanner;
@@ -27,7 +28,7 @@ public class UI {
         p1.AddCard(cardBuilder.getCard("Strike"), 5);
         p1.AddCard(cardBuilder.getCard("Defend"), 4);
         p1.AddCard(cardBuilder.getCard("Bash"));
-        map.playMap();
+        map.playMap(new PlayerAvatar(p1));
     }
     public int getUserInput(String textToDisplay) {
         Scanner scanner = new Scanner(System.in);

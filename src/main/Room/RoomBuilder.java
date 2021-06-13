@@ -1,16 +1,19 @@
 package main.Room;
 
 
+import main.Card.Card;
+import main.Card.CardBuilder;
 import main.Fight.*;
 import main.Fight.Pattern.CultistPattern;
 import main.Fight.Pattern.Pattern;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class RoomBuilder {
     private static RoomBuilder instance = null;
-    private static final HashMap<roomType,Opponent> typeMap = new HashMap<>();
+    private static final HashMap<roomType,ArrayList<Opponent>> typeMap = new HashMap<>();
     private static final HashMap<String,Opponent> nameMap = new HashMap<>();
     private RoomBuilder() {
     }
@@ -18,8 +21,16 @@ public class RoomBuilder {
         //Initialisation monstres
         Pattern pat = new CultistPattern();
         Opponent cultist = new Opponent("Cultist", 47, pat);
-        typeMap.put(roomType.FIGHT,cultist);
+        typePut(roomType.FIGHT,cultist);
         nameMap.put("Cultist",cultist);
+    }
+
+    private static void typePut(roomType type,Opponent opponent){
+        ArrayList<Opponent> opponentsArray = new ArrayList<>();
+        opponentsArray.add(opponent);
+        if (typeMap.putIfAbsent(type,opponentsArray)==null){
+            typeMap.get(type).add(opponent);
+        }
     }
 
     public static RoomBuilder getRoomBuilder() {
@@ -30,29 +41,30 @@ public class RoomBuilder {
         return instance;
     }
 
-    private FightRoom buildFight(PlayerAvatar player){
-        ArrayList<FightEntity> arrayOpponents= new ArrayList<>();
+    private Opponent randomEnnemy(roomType type){
+        Random random = new Random();
+        ArrayList<Opponent> a = typeMap.get(type);
+        return a.get(random.nextInt(a.size()));
+    }
 
-        return new FightRoom(player,arrayOpponents);
+    private FightRoom buildFight(roomType type){
+        ArrayList<FightEntity> arrayOpponents= new ArrayList<>();
+        arrayOpponents.add(randomEnnemy(type));
+        return new FightRoom(arrayOpponents);
     }
 
     public Room createRoom(roomType type) {
         switch (type){
-            case FIGHT -> {
-                return buildFight()
+            case FIGHT, BOSS, ELITE -> {
+                return buildFight(type);
             }
             case SHOP -> {
-
-            }
-            case ELITE -> {
-
-            }
-            case BOSS -> {
-
+                return null;
             }
             case REST -> {
-
+                return null;
             }
+            default -> throw new IllegalStateException("Unexpected value: " + type);
         }
     }
     public enum roomType{
