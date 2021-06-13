@@ -48,6 +48,12 @@ public class Player {
         }
     }
 
+    public void addGold(int amount) {
+        if (amount > 0) {
+            gold += amount;
+        }
+    }
+
     public void AddCard(Card card) {
         Objects.requireNonNull(card);
         deck.push(card);

@@ -3,6 +3,7 @@ package main.Card;
 
 import main.Card.Strategies.*;
 
+import java.sql.DataTruncation;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -40,6 +41,43 @@ public class CardBuilder {
         strat.add(new EnergyStrategy(2));
         strat.add(new LoseHpStrategy(3));
         buildCard("Bloodletting",0,strat, Card.Type.SKILL,"Lose 3 HP. Gain 2 energy.",Color.IRONCLAD);
+
+        strat.clear();
+        strat.add(new SimpleAttackStrategy(7));
+        strat.add(new GainHpStrategy(2));
+        buildCard("Bite", 1, strat, Card.Type.ATTACK, "Deal 7 damages. Heal 2HP.", Color.IRONCLAD);
+        strat.clear();
+        strat.add(new WeakStrategy(2));
+        buildCard("Blind", 0, strat, Card.Type.SKILL, "Apply 2 Weak.", Color.IRONCLAD);
+        strat.clear();
+        strat.add(new AllAttackStrategy(6));
+        buildCard("Dramatic Entrance", 0, strat, Card.Type.ATTACK, "Innate. Deal 6 damage to ALL enemies.", Color.IRONCLAD);
+        strat.clear();
+        strat.add(new SimpleAttackStrategy(4));
+        buildCard("Shiv", 0, strat, Card.Type.ATTACK, "Deal 4 damage.", Color.IRONCLAD);
+        strat.clear();
+        strat.add(new SimpleAttackStrategy(6));
+        buildCard("Swift Strike", 0, strat, Card.Type.ATTACK, "Deal 6 damage.", Color.IRONCLAD);
+        strat.clear();
+        strat.add(new VulnerableStrategy(2));
+        buildCard("Trip", 0, strat, Card.Type.SKILL, "Apply 2 Vulnerable.", Color.IRONCLAD);
+        strat.clear();
+        strat.add(new SimpleAttackStrategy(32));
+        buildCard("Bludgeon", 3, strat, Card.Type.ATTACK, "Deal 32 damage.", Color.IRONCLAD);
+        strat.clear();
+        strat.add(new SimpleAttackStrategy(12));
+        strat.add(new WeakStrategy(2));
+        buildCard("Clothesline", 2, strat, Card.Type.ATTACK, "Deal 12 damage. Apply 2 Weak.", Color.IRONCLAD);
+        strat.clear();
+        strat.add(new DoubleBlockStrategy());
+        buildCard("Entrench", 2, strat, Card.Type.SKILL, "Double your Block.", Color.IRONCLAD);
+        strat.clear();
+        strat.add(new LoseHpStrategy(3));
+        strat.add(new SimpleAttackStrategy(14));
+        buildCard("Hemokinesis", 0, strat, Card.Type.ATTACK, "Lose 3 HP. Deal 14 damage.", Color.IRONCLAD);
+        strat.clear();
+        strat.add(new BlockStrategy(30));
+        buildCard("Impervious", 2, strat, Card.Type.SKILL, "Gain 30 Block.", Color.IRONCLAD);
     }
 
 

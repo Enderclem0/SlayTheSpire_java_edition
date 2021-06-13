@@ -114,6 +114,9 @@ public class PlayerAvatar extends Player implements FightEntity {
     public void loseHp(int amount){
         damageHp(amount);
     }
+    public void gainHp(int amount) {
+        hp += amount;
+    }
 
     public void discardHand() {
         while (hand.getSize() > 0) {
