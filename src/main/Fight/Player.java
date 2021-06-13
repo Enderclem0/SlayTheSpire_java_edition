@@ -21,6 +21,7 @@ public class Player {
         this.energyMax = energyMax;
     }
 
+
     public int getHp() {
         return hp;
     }

@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class UI {
     private static UI instance = null;
-
+    private static final Player player = new Player(80, 3, 80, 3);
     private UI() {
     }
 
@@ -18,17 +18,19 @@ public class UI {
         }
         return instance;
     }
+    public static Player getPlayer(){
+        return player;
+    }
     public static void main(String[] args) throws InterruptedException {
         Display display = TextDisplay.getDisplay();
-        // Initialisation personnage et cartes
-        PlayerAvatar p1 = new PlayerAvatar(80, 3, 80, 3);
         Mapbuilder mapbuilder = Mapbuilder.getMapBuilder();
         CardBuilder cardBuilder = CardBuilder.getCardBuilder();
-        GameMap map = new GameMap();
-        p1.AddCard(cardBuilder.getCard("Strike"), 5);
-        p1.AddCard(cardBuilder.getCard("Defend"), 4);
-        p1.AddCard(cardBuilder.getCard("Bash"));
-        map.playMap(new PlayerAvatar(p1));
+        PlayerAvatar playerAvatar = new PlayerAvatar(80, 3, 80, 3);
+        GameMap map = mapbuilder.createMap(playerAvatar);
+        player.AddCard(cardBuilder.getCard("Strike"), 5);
+        player.AddCard(cardBuilder.getCard("Defend"), 4);
+        player.AddCard(cardBuilder.getCard("Bash"));
+        map.playMap(playerAvatar);
     }
     public int getUserInput(String textToDisplay) {
         Scanner scanner = new Scanner(System.in);

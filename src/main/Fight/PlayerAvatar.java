@@ -22,21 +22,17 @@ public class PlayerAvatar extends Player implements FightEntity {
         super(hp, energy, hpMax, energyMax);
         this.energy = energyMax;
         this.block = 0;
+        initBuff();
+    }
+
+
+    private void initBuff(){
         for (Debuff value : Debuff.values()) {
-            debuff.put(value, 0);
+            debuff.put(value,0);
         }
-        for (Buff value : Buff.values()) {
-            buff.put(value, 0);
+        for(Buff value : Buff.values()){
+            buff.put(value,0);
         }
-    }
-
-    public PlayerAvatar(PlayerAvatar p1) {
-        super(p1.hp, p1.energyMax, p1.hpMax, p1.energyMax);
-        this.block = 0;
-    }
-
-    public PlayerAvatar(Player player){
-        super(player.hp, player.energyMax,player.hpMax, player.energyMax);
     }
 
     @Override
@@ -57,10 +53,20 @@ public class PlayerAvatar extends Player implements FightEntity {
 
     @Override
     public void damage(int dmg, FightEntity fightEntity) {
-        fightEntity.takeDamage((int) (Math.ceil(dmg + buff.get(Buff.STRENGHT))/(0.25*(debuff.get(Debuff.WEAK)>0?1:0))));
+        int damage = dmg + buff.get(Buff.STRENGHT);
+        double divider = 0.25*(debuff.get(Debuff.WEAK)>0?1:0);
+        if (divider==0.0){
+            divider = 1;
+        }
+        fightEntity.takeDamage((int) (Math.ceil(damage/divider)));
     }
     public void damage(int dmg, FightEntity fightEntity,int multiplier) {
-        fightEntity.takeDamage((int) (Math.ceil(dmg + buff.get(Buff.STRENGHT)*3)/(0.25*(debuff.get(Debuff.WEAK)>0?1:0))));
+        int damage = dmg + buff.get(Buff.STRENGHT)*multiplier;
+        double divider = 0.25*(debuff.get(Debuff.WEAK)>0?1:0);
+        if (divider==0.0){
+            divider = 1;
+        }
+        fightEntity.takeDamage((int) (Math.ceil(damage/divider)));
     }
 
     public void draw(int amount) {
@@ -150,7 +156,6 @@ public class PlayerAvatar extends Player implements FightEntity {
         for (Debuff value : Debuff.values()) {
             debuff.compute(value, (k, v) -> (Objects.requireNonNull(v) > 0) ? v - 1 : v);
         }
-
     }
 
     public int getBlock() {

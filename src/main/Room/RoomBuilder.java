@@ -1,8 +1,6 @@
 package main.Room;
 
 
-import main.Card.Card;
-import main.Card.CardBuilder;
 import main.Fight.*;
 import main.Fight.Pattern.CultistPattern;
 import main.Fight.Pattern.Pattern;
@@ -47,21 +45,18 @@ public class RoomBuilder {
         return a.get(random.nextInt(a.size()));
     }
 
-    private FightRoom buildFight(roomType type){
+    private FightRoom buildFight(roomType type, PlayerAvatar playerAvatar){
         ArrayList<FightEntity> arrayOpponents= new ArrayList<>();
         arrayOpponents.add(randomEnnemy(type));
-        return new FightRoom(arrayOpponents);
+        return new FightRoom(playerAvatar,arrayOpponents);
     }
 
-    public Room createRoom(roomType type) {
+    public Room createRoom(roomType type, PlayerAvatar playerAvatar) {
         switch (type){
             case FIGHT, BOSS, ELITE -> {
-                return buildFight(type);
+                return buildFight(type, playerAvatar);
             }
-            case SHOP -> {
-                return null;
-            }
-            case REST -> {
+            case SHOP, REST -> {
                 return null;
             }
             default -> throw new IllegalStateException("Unexpected value: " + type);

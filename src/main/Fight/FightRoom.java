@@ -15,10 +15,10 @@ public class FightRoom implements Room {
     private final ArrayList<FightEntity> entitiesList;
     private int nbTurns = 0;
 
-    public FightRoom(ArrayList<FightEntity> ennemies) {
+    public FightRoom(PlayerAvatar playerAvatar,ArrayList<FightEntity> ennemies) {
         Objects.requireNonNull(ennemies);
         ArrayList<FightEntity> entities = new ArrayList<>();
-        entities.add(null);
+        entities.add(playerAvatar);
         entities.addAll(ennemies);
         this.entitiesList = entities;
     }
@@ -155,14 +155,6 @@ public class FightRoom implements Room {
         return (Opponent) entitiesList.get(position);
     }
 
-    public ActionType getOpponentMove(int position) {
-        return getOpponent(position).getNextActionType(this);
-    }
-
-    public void makeOpponentDie(int position) {
-        entitiesList.remove(position);
-    }
-
     public boolean isFightOver() {
         int opponentDead = 0;
         for (int i = 1; i <= opponentAmount(); i++) {
@@ -177,7 +169,6 @@ public class FightRoom implements Room {
     }
 
     public boolean playRoom(Player player) throws InterruptedException {
-        entitiesList.set(0,new PlayerAvatar(player));
         Display display = TextDisplay.getDisplay();
         while (!(isFightOver())) {
             display.displayFight(this);
@@ -188,6 +179,7 @@ public class FightRoom implements Room {
             playOpponentTurn();
             endOfTurn();
         }
+        System.out.println("Fin du combat, mort:"+getPlayer().isDead());
         return !getPlayer().isDead();
     }
 

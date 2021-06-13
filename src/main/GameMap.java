@@ -6,7 +6,7 @@ import main.Room.Room;
 import java.util.ArrayList;
 
 public class GameMap {
-    private ArrayList<Room> map;
+    private final ArrayList<Room> map = new ArrayList<>();
     public GameMap() {
     }
     public void addRoom(Room room){
