@@ -24,8 +24,8 @@ public record Card(ArrayList<CardStrategy> strategies, int energyCost,
     public void playCard(FightRoom fightRoom, ArrayList<Object> target) {
         for (CardStrategy strategy : strategies) {
             strategy.playStrat(fightRoom, target);
+            fightRoom.getPlayer().useEnergy(energyCost);
         }
-        fightRoom.getPlayer().useEnergy(energyCost);
     }
 
     @Override

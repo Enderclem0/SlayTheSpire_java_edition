@@ -20,7 +20,6 @@ public class PlayerAvatar extends Player implements FightEntity {
 
     public PlayerAvatar(int hp, int energy, int hpMax, int energyMax) {
         super(hp, energy, hpMax, energyMax);
-        this.energy = energyMax;
         this.block = 0;
         initBuff();
     }
