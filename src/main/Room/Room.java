@@ -1,5 +1,5 @@
 package main.Room;
 
-public class Room {
-
+public interface Room {
+    boolean playRoom() throws InterruptedException;
 }

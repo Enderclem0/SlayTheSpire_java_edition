@@ -3,6 +3,7 @@ package main.Fight;
 import main.Card.Card;
 import main.Display;
 import main.Fight.Pattern.ActionType;
+import main.Room.Room;
 import main.TextDisplay;
 import main.UI;
 
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-public class FightRoom {
+public class FightRoom implements Room {
     private final ArrayList<FightEntity> entitiesList;
     private int nbTurns = 0;
 

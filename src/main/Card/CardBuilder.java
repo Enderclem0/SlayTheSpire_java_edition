@@ -10,9 +10,9 @@ import java.util.Random;
 public class CardBuilder {
     private static CardBuilder instance = null;
     private int unlockNumber;
-    private final HashMap<Color, ArrayList<Card>> colorMap = new HashMap<>();
-    private final HashMap<String, Card> cardMap = new HashMap<>();
-    public void initCard(){
+    private static final HashMap<Color, ArrayList<Card>> colorMap = new HashMap<>();
+    private static final HashMap<String, Card> cardMap = new HashMap<>();
+    private static void initCard(){
         ArrayList<CardStrategy> strat = new ArrayList<>();
         strat.add(new SimpleAttackStrategy(6));
         buildCard("Strike",1,strat,Card.Type.ATTACK,"Deal 6 damage",Color.IRONCLAD);
@@ -46,12 +46,12 @@ public class CardBuilder {
 
     private CardBuilder() {
     }
-    private void buildCard(String name,int energyCost,ArrayList<CardStrategy> strat,Card.Type type,String description,Color color){
+    private static void buildCard(String name, int energyCost, ArrayList<CardStrategy> strat, Card.Type type, String description, Color color){
         Card card = new Card(strat,energyCost,name,type,description);
         cardMap.put(name,card);
         colorPut(card,color);
     }
-    private void colorPut(Card card,Color color){
+    private static void colorPut(Card card, Color color){
         ArrayList<Card> cardArray = new ArrayList<>();
         cardArray.add(card);
         if (colorMap.putIfAbsent(color,cardArray)==null){
@@ -61,6 +61,7 @@ public class CardBuilder {
     public static CardBuilder getCardBuilder() {
         if (instance == null) {
             instance = new CardBuilder();
+            initCard();
         }
         return instance;
     }

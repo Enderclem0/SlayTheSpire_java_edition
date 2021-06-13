@@ -26,6 +26,12 @@ public class Opponent implements FightEntity {
             buff.put(value, 0);
         }
     }
+    public Opponent(Opponent other){
+        this.name = other.name;
+        this.pattern = other.pattern;
+        this.hp = other.hp;
+        this.block = 0;
+    }
 
     public main.Fight.Pattern.ActionType getNextActionType(FightRoom fightRoom) {
         return pattern.getNextActionType(fightRoom);

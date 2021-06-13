@@ -9,7 +9,7 @@ public record LoseHpStrategy(int amount) implements CardStrategy {
 
     @Override
     public void playStrat(FightRoom fightRoom, ArrayList<Object> chosen) {
-        fightRoom.getPlayer().loseHp(3);
+        fightRoom.getPlayer().loseHp(amount);
     }
 
     @Override
