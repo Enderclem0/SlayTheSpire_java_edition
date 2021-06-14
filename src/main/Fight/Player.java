@@ -55,14 +55,14 @@ public class Player {
         }
     }
 
-    public void AddCard(Card card) {
+    public void addCard(Card card) {
         Objects.requireNonNull(card);
         deck.push(card);
     }
 
-    public void AddCard(Card card, int amount) {
+    public void addCard(Card card, int amount) {
         for (int i = 0; i < amount; i++) {
-            AddCard(card);
+            addCard(card);
         }
     }
 

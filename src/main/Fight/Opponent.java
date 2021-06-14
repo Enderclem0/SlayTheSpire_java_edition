@@ -31,6 +31,12 @@ public class Opponent implements FightEntity {
         this.pattern = other.pattern;
         this.hp = other.hp;
         this.block = 0;
+        for (Debuff value : Debuff.values()) {
+            debuff.put(value, 0);
+        }
+        for (Buff value : Buff.values()) {
+            buff.put(value, 0);
+        }
     }
 
     public main.Fight.Pattern.ActionType getNextActionType(FightRoom fightRoom) {
@@ -108,4 +114,7 @@ public class Opponent implements FightEntity {
         block = 0;
     }
 
+    public String getName() {
+        return name;
+    }
 }

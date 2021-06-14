@@ -1,8 +1,8 @@
 package main.Fight;
 
 import main.Card.Card;
+import main.Card.CardBuilder;
 import main.Display;
-import main.Fight.Pattern.ActionType;
 import main.Room.Room;
 import main.TextDisplay;
 import main.UI;
@@ -25,13 +25,12 @@ public class FightRoom implements Room {
 
     private Object getTarget(Card.targetType target) {
         boolean valid = false;
-        UI ui = UI.getUI();
         Display display = TextDisplay.getDisplay();
         int chosen;
         switch (target) {
             case ENNEMY -> {
                 do {
-                    chosen = ui.getUserInput("Chose an opponent number");
+                    chosen = UI.getUserInput("Chose an opponent number");
                     if (chosen > 0 && chosen <= opponentAmount()) {
                         valid = true;
                     }
@@ -41,7 +40,7 @@ public class FightRoom implements Room {
             case CARD_DISCARD -> {
                 do {
                     display.displayDiscard(getPlayer());
-                    chosen = ui.getUserInput("Chose a card number from the discard");
+                    chosen = UI.getUserInput("Chose a card number from the discard");
                     if (chosen > 0 && chosen <= getPlayer().getDiscard().getSize()) {
                         valid = true;
                     }
@@ -50,7 +49,7 @@ public class FightRoom implements Room {
             }
             case CARD_HAND -> {
                 do {
-                    chosen = ui.getUserInput("Chose a card in hand");
+                    chosen = UI.getUserInput("Chose a card in hand");
                     if (chosen > 0 && chosen <= getPlayer().getHand().getSize()) {
                         valid = true;
                     }
@@ -60,7 +59,7 @@ public class FightRoom implements Room {
             case CARD_DRAWPILE -> {
                 do {
                     display.displayDraw(getPlayer());
-                    chosen = ui.getUserInput("Chose a card in drawpile");
+                    chosen = UI.getUserInput("Chose a card in drawpile");
                     if (chosen > 0 && chosen <= getPlayer().getDraw().getSize()) {
                         valid = true;
                     }
@@ -83,7 +82,6 @@ public class FightRoom implements Room {
     }
 
     public void playPlayerTurn() {
-        UI ui = UI.getUI();
         Display display = TextDisplay.getDisplay();
         PlayerAvatar playerAvatar = getPlayer();
         playerAvatar.resetEnergy();
@@ -91,7 +89,7 @@ public class FightRoom implements Room {
         boolean skip = false;
         while (!skip) {
             display.displayHand(playerAvatar.getHand());
-            int chosen = ui.getUserInput("Chose a card number or -1 to skip ");
+            int chosen = UI.getUserInput("Chose a card number or -1 to skip ");
             if (chosen > 0 && chosen <= playerAvatar.getHand().getSize()) {
                 Card card = playerAvatar.getCard(chosen - 1);
                 if (playerAvatar.isCardPlayable(card)) {
@@ -107,15 +105,6 @@ public class FightRoom implements Room {
         }
     }
 
-    public Card choseCard(int numberOfCard) {
-        UI ui = UI.getUI();
-        int chosen;
-        do {
-            chosen = ui.getUserInput("Chose a card");
-        }
-        while (chosen < 0 || chosen > numberOfCard);
-        return getPlayer().getCard(chosen);
-    }
 
     public void playOpponentTurn() throws InterruptedException {
         Display display = TextDisplay.getDisplay();
@@ -134,10 +123,6 @@ public class FightRoom implements Room {
 
     public int opponentAmount() {
         return entitiesList.size() - 1;
-    }
-
-    public ArrayList<FightEntity> getAllEntities() {
-        return entitiesList;
     }
 
     public ArrayList<Opponent> getAllOpponents() {
@@ -179,8 +164,30 @@ public class FightRoom implements Room {
             playOpponentTurn();
             endOfTurn();
         }
-        System.out.println("Fin du combat, mort:"+getPlayer().isDead());
+        rewardPlayer();
         return !getPlayer().isDead();
+    }
+
+    private void rewardPlayer() {
+        CardBuilder cardBuilder = CardBuilder.getCardBuilder();
+        Display display = TextDisplay.getDisplay();
+        ArrayList<Card> reward = new ArrayList<>();
+        reward.add(cardBuilder.createCard(CardBuilder.Color.IRONCLAD));
+        reward.add(cardBuilder.createCard(CardBuilder.Color.IRONCLAD));
+        reward.add(cardBuilder.createCard(CardBuilder.Color.IRONCLAD));
+        display.displayText("Reward time !");
+        for (Card card : reward) {
+            display.displayCard(card);
+        }
+        boolean valid = false;
+        while (!valid) {
+            int chosen = UI.getUserInput("Chose a card number between 1 and 3");
+            if (chosen <= 3 && chosen > 0) {
+                getPlayer().addCard(reward.get(chosen));
+                valid = true;
+            }
+        }
+
     }
 
     private void endOfTurn() {

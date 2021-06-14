@@ -21,7 +21,7 @@ public record AddCardStrategy(Card card, Pile pile) implements CardStrategy{
             }
             case DECK -> {
                 Player player = fightRoom.getPlayer();
-                player.AddCard(card);
+                player.addCard(card);
             }
         }
     }

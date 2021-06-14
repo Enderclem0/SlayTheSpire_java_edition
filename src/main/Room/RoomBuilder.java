@@ -1,12 +1,16 @@
 package main.Room;
 
 
-import main.Fight.*;
+import main.Fight.FightEntity;
+import main.Fight.FightRoom;
+import main.Fight.Opponent;
 import main.Fight.Pattern.CultistPattern;
-import main.Fight.Pattern.Pattern;
+import main.Fight.Pattern.JawWormPattern;
+import main.Fight.PlayerAvatar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class RoomBuilder {
@@ -15,12 +19,14 @@ public class RoomBuilder {
     private static final HashMap<String,Opponent> nameMap = new HashMap<>();
     private RoomBuilder() {
     }
-    private static void initMonster(){
+    private static void initMonster() {
         //Initialisation monstres
-        Pattern pat = new CultistPattern();
-        Opponent cultist = new Opponent("Cultist", 47, pat);
-        typePut(roomType.FIGHT,cultist);
-        nameMap.put("Cultist",cultist);
+        Opponent cultist = new Opponent("Cultist", 47, new CultistPattern());
+        typePut(roomType.FIGHT, cultist);
+        nameMap.put("Cultist", cultist);
+        Opponent jawWorm = new Opponent("Jaw Worm", 42, new JawWormPattern());
+        typePut(roomType.FIGHT, jawWorm);
+        nameMap.put("JawWorm", jawWorm);
     }
 
     private static void typePut(roomType type,Opponent opponent){
@@ -42,17 +48,21 @@ public class RoomBuilder {
     private Opponent randomEnnemy(roomType type){
         Random random = new Random();
         ArrayList<Opponent> a = typeMap.get(type);
-        return a.get(random.nextInt(a.size()));
+        return new Opponent(a.get(random.nextInt(a.size())));
     }
 
-    private FightRoom buildFight(roomType type, PlayerAvatar playerAvatar){
-        ArrayList<FightEntity> arrayOpponents= new ArrayList<>();
+    private FightRoom buildFight(roomType type, PlayerAvatar playerAvatar) {
+        ArrayList<FightEntity> arrayOpponents = new ArrayList<>();
         arrayOpponents.add(randomEnnemy(type));
-        return new FightRoom(playerAvatar,arrayOpponents);
+        return new FightRoom(playerAvatar, arrayOpponents);
+    }
+
+    public Opponent getOpponent(String monster) {
+        return new Opponent(nameMap.getOrDefault(monster, null));
     }
 
     public Room createRoom(roomType type, PlayerAvatar playerAvatar) {
-        switch (type){
+        switch (type) {
             case FIGHT, BOSS, ELITE -> {
                 return buildFight(type, playerAvatar);
             }
@@ -62,8 +72,17 @@ public class RoomBuilder {
             default -> throw new IllegalStateException("Unexpected value: " + type);
         }
     }
-    public enum roomType{
-        FIGHT,SHOP,ELITE,BOSS,REST
+
+    public ArrayList<Opponent> getAllOpponents() {
+        ArrayList<Opponent> ret = new ArrayList<>();
+        for (Map.Entry<String, Opponent> stringCardEntry : nameMap.entrySet()) {
+            ret.add(stringCardEntry.getValue());
+        }
+        return ret;
+    }
+
+    public enum roomType {
+        FIGHT, SHOP, ELITE, BOSS, REST
     }
 
 }

@@ -3,14 +3,13 @@ package main.Card;
 
 import main.Card.Strategies.*;
 
-import java.sql.DataTruncation;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class CardBuilder {
     private static CardBuilder instance = null;
-    private int unlockNumber;
     private static final HashMap<Color, ArrayList<Card>> colorMap = new HashMap<>();
     private static final HashMap<String, Card> cardMap = new HashMap<>();
     private static void initCard(){
@@ -73,10 +72,10 @@ public class CardBuilder {
         strat.clear();
         strat.add(new LoseHpStrategy(3));
         strat.add(new SimpleAttackStrategy(14));
-        buildCard("Hemokinesis", 0, strat, Card.Type.ATTACK, "Lose 3 HP. Deal 14 damage.", Color.IRONCLAD);
+        buildCard("Hemokinesis", 0, new ArrayList<>(strat), Card.Type.ATTACK, "Lose 3 HP. Deal 14 damage.", Color.IRONCLAD);
         strat.clear();
         strat.add(new BlockStrategy(30));
-        buildCard("Impervious", 2, strat, Card.Type.SKILL, "Gain 30 Block.", Color.IRONCLAD);
+        buildCard("Impervious", 2, new ArrayList<>(strat), Card.Type.SKILL, "Gain 30 Block.", Color.IRONCLAD);
     }
 
 
@@ -106,14 +105,23 @@ public class CardBuilder {
     public Card createCard(Color color) {
         Random random = new Random();
         ArrayList<Card> a = colorMap.get(color);
+        System.out.println(a);
         return a.get(random.nextInt(a.size()));
     }
 
-    public Card getCard(String name){
-        return cardMap.get(name);
+    public Card getCard(String name) {
+        return cardMap.getOrDefault(name, null);
     }
 
-    private enum Color {
+    public ArrayList<Card> getAllCards() {
+        ArrayList<Card> ret = new ArrayList<>();
+        for (Map.Entry<String, Card> stringCardEntry : cardMap.entrySet()) {
+            ret.add(stringCardEntry.getValue());
+        }
+        return ret;
+    }
+
+    public enum Color {
         COLORLESS, CURSE, IRONCLAD,
     }
 
