@@ -155,6 +155,7 @@ public class FightRoom implements Room {
 
     public boolean playRoom(Player player) throws InterruptedException {
         Display display = TextDisplay.getDisplay();
+        getPlayer().getDraw().shuffle();
         while (!(isFightOver())) {
             display.displayFight(this);
             playPlayerTurn();

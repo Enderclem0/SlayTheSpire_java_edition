@@ -69,14 +69,13 @@ public class PlayerAvatar extends Player implements FightEntity {
     }
 
     public void draw(int amount) {
-        int drawEmpty = hand.draw(draw, amount);
-        if (!(drawEmpty == 0)) {
+        if(draw.getSize()<amount){
             while (!discard.isEmpty()) {
                 draw.push(discard.pop());
             }
             draw.shuffle();
-            hand.draw(draw, drawEmpty);
         }
+        hand.draw(draw, amount);
     }
 
     public Card getFromDraw(int position) {
@@ -163,4 +162,5 @@ public class PlayerAvatar extends Player implements FightEntity {
     public int getBlock() {
         return block;
     }
+
 }
